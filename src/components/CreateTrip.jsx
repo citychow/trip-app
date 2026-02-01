@@ -32,18 +32,17 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
 
   return (
     <div className="full-page">
-      <div className="container" style={{ paddingBottom: "100px" }}>
+      <div className="container" style={{ paddingBottom: "50px" }}>
         {" "}
         {/* 預留位畀底部的 NavBar */}
-        <h2 className="title" style={{ marginTop: "20px" }}>
+        <h2 style={{ marginTop: "20px" }}>
           {initialData ? "✍️ 修改行程資料" : "✍️ 規劃新旅程"}
         </h2>
         <div className="info-card">
           {/* 旅程名稱 */}
-          <div className="form-group">
+          <div className="input-group">
             <label>旅程名稱</label>
             <input
-              className="input-field"
               placeholder="例如：Osaka 2026"
               value={formData.name}
               onChange={(e) =>
@@ -53,10 +52,9 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
           </div>
 
           {/* 國家 */}
-          <div className="form-group">
+          <div className="input-group">
             <label>國家 / 地點</label>
             <input
-              className="input-field"
               placeholder="例如：Japan"
               value={formData.country}
               onChange={(e) =>
@@ -67,22 +65,20 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
 
           {/* 日期 Row - 解決 Overflow 重災區 */}
           <div className="date-row">
-            <div className="form-group date-group">
+            <div className="input-group date-group">
               <label>第一日</label>
               <input
                 type="date"
-                className="input-field date-input"
                 value={formData.startDate}
                 onChange={(e) =>
                   setFormData({ ...formData, startDate: e.target.value })
                 }
               />
             </div>
-            <div className="form-group date-group">
+            <div className="input-group date-group">
               <label>最後一日</label>
               <input
                 type="date"
-                className="input-field date-input"
                 value={formData.endDate}
                 onChange={(e) =>
                   setFormData({ ...formData, endDate: e.target.value })
@@ -99,11 +95,10 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
           )}
 
           {/* 描述 */}
-          <div className="form-group" style={{ marginTop: "15px" }}>
+          <div className="input-group" style={{ marginTop: "15px" }}>
             <label>備註 / 描述</label>
-            <textarea
-              className="input-field"
-              rows="4"
+            <input
+              type="text"
               placeholder="寫低你想去嘅地方或者特別要留意嘅嘢..."
               value={formData.desc}
               onChange={(e) =>
@@ -119,19 +114,14 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
         >
           <button
             className="add-main-btn"
-            style={{ flex: 1 }}
+        
             onClick={handleSave}
           >
             {initialData ? "儲存修改" : "開始規劃"}
           </button>
           <button
-            className="add-item-btn cancel-btn"
-            style={{
-              flex: 1,
-              backgroundColor: "#F5F5F5",
-              color: "#666",
-              border: "1px solid #DDD",
-            }}
+            className="cancel-main-btn"
+            
             onClick={onCancel}
           >
             取消

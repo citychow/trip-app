@@ -26,6 +26,17 @@ const TripDetail = ({ trip, onBack, onUpdateTrip }) => {
     setIsAdding(false);
   };
 
+//3a. Handle updated
+const handleUpdateActivity = (updatedItem) => {
+  const updatedTrip = {
+    ...trip,
+    itinerary: trip.itinerary.map((act) =>
+      act.id === updatedItem.id ? { ...updatedItem, day: activeDay } : act
+    ),
+  };
+  onUpdateTrip(updatedTrip);
+};
+
   // 3. 處理刪除
   const handleDeleteActivity = (activityId) => {
     if (window.confirm("確定要刪除？")) {
@@ -38,9 +49,9 @@ const TripDetail = ({ trip, onBack, onUpdateTrip }) => {
   };
 
   return (
-    <div className="full-page" style={{ backgroundColor: "#FCF8F5" }}>
+    <div className="container">
       <button className="back-btn" onClick={onBack}>
-        ← Back
+        ← 揀行程
       </button>
 
       <Countdown startDate={trip.startDate} />
@@ -57,18 +68,12 @@ const TripDetail = ({ trip, onBack, onUpdateTrip }) => {
         <ItineraryList
           activities={dayActivities}
           onDelete={handleDeleteActivity}
+          onUpdate={handleUpdateActivity}
         />
 
-        <div
-          style={{
-            marginTop: "20px",
-            borderTop: "1px dashed #EEE",
-            paddingTop: "20px",
-          }}
-        >
           {isAdding ? (
             <ItineraryForm
-              onAdd={handleAddActivity}
+              onSave={handleAddActivity}
               onCancel={() => setIsAdding(false)}
             />
           ) : (
@@ -76,7 +81,7 @@ const TripDetail = ({ trip, onBack, onUpdateTrip }) => {
               + 新增行程內容
             </button>
           )}
-        </div>
+        
       </div>
     </div>
   );

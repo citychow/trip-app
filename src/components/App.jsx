@@ -117,20 +117,6 @@ const App = () => {
       )}
     </div>
   );
-
-  // return (
-  //   <div className="app-wrapper">
-  //     <main className="main-content">{renderContent()}</main>
-
-  //     <Navbar
-  //       currentTab={activeTab}
-  //       onTabChange={(tab) => {
-  //         setActiveTab(tab);
-  //         if (tab === "trip") setScreen("home"); // 切換回行程時返去列表
-  //       }}
-  //     />
-  //   </div>
-  // );
 };
 
 export default App;

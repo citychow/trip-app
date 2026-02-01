@@ -106,8 +106,8 @@ const ShoppingTab = ({ tripId }) => {
 
   return (
     <div className="tab-container">
-      <header className="header-with-action">
-        <h1 className="title">有咩要買</h1>
+      <header className="tab-header">
+        <h1>有咩要買</h1>
       </header>
       {/* 統計卡片 - 支援過濾功能 */}
       <div className="summary-cards">

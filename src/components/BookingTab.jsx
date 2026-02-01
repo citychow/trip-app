@@ -32,6 +32,17 @@ const BookingTab = ({ tripId }) => {
     localStorage.setItem(`bookings_${tripId}`, JSON.stringify(bookings));
   }, [bookings, tripId]);
 
+  const handleEdit = (item) => {
+    setEditingItem(item); // Store the full item details
+    setIsAdding(true);    // Open the form
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("確定要刪除這項預約紀錄嗎？")) {
+      setBookings(bookings.filter((b) => b.id !== id));
+    }
+  };
+
   const handleContainerClick = () => setActiveMenuId(null);
 
   if (isAdding) {
@@ -60,20 +71,20 @@ const BookingTab = ({ tripId }) => {
   }
   return (
     <div className="tab-container" onClick={handleContainerClick}>
-      <header className="header-with-action">
-        <h1 className="title">預約紀錄</h1>
+      <header className="tab-header">
+        <h1>預約紀錄</h1>
         <button className="icon-btn-top" onClick={() => setIsAdding(true)}>
           ➕
         </button>
       </header>
-
-      <div className="booking-list-wrapper">
+<div className="container">
+      <div>
         {categories.map((cat) => {
           const catItems = bookings.filter((b) => b.type === cat);
           if (catItems.length === 0) return null;
 
           return (
-            <div key={cat} className="category-section">
+            <div key={cat}>
               <div className="category-header">
                 <span className="cat-title">{cat}</span>
                 <span className="count-badge">{catItems.length}</span>
@@ -82,94 +93,85 @@ const BookingTab = ({ tripId }) => {
               {catItems.map((item) => (
                 /* 動態加入類別 class */
                 <div key={item.id} className={`booking-card type-${item.type}`}>
-                  <div className="card-top-action">
-                    <button
-                      className="more-options-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveMenuId(
-                          activeMenuId === item.id ? null : item.id
-                        );
-                      }}
-                    >
-                      ⋮
-                    </button>
+    <div className="card-header">
+      <h3 className="card-name">{item.name}</h3>
+      
+      <div className="card-top-action">
+        <button className="edit-btn" onClick={() => handleEdit(item)}>
+          ✏️
+        </button>
+        <button
+          className="del-btn"
+          onClick={(e) => {
+            handleDelete(item.id);
+          }}
+        >
+          ×
+        </button>
+      </div>
+    </div>
 
-                    {activeMenuId === item.id && (
-                      <div className="dropdown-menu">
-                        <div
-                          className="menu-item"
-                          onClick={() => handleEdit(item)}
-                        >
-                          ✍️ 修改
-                        </div>
-                        <div
-                          className="menu-item delete"
-                          onClick={() => handleDelete(item.id)}
-                        >
-                          🗑️ 刪除
-                        </div>
-                      </div>
-                    )}
-                  </div>
 
-                  <div className="card-content">
-                    <h3 className="card-name">{item.name}</h3>
+    <div>
+      {/* 酒店：粉紅系 */}
+      {item.type === "酒店" && (
+        <div className="detail-box hotel-box">
+          <div className="time-block">
+            <label>Check-in</label>
+            <div className="time-val">
+              {item.checkIn} {item.checkInTime}
+            </div>
+          </div>
+          <div className="time-block">
+            <label>Check-out</label>
+            <div className="time-val">
+              {item.checkOut} {item.checkOutTime}
+            </div>
+          </div>
+        </div>
+      )}
 
-                    {/* 酒店：粉紅系 */}
-                    {item.type === "酒店" && (
-                      <div className="detail-box hotel-box">
-                        <div className="time-block">
-                          <label>Check-in</label>
-                          <div className="time-val">
-                            {item.checkIn} {item.checkInTime}
-                          </div>
-                        </div>
-                        <div className="time-block">
-                          <label>Check-out</label>
-                          <div className="time-val">
-                            {item.checkOut} {item.checkOutTime}
-                          </div>
-                        </div>
-                      </div>
-                    )}
+      {/* 機票：橙黃/藍系 */}
+      {item.type === "機票" && (
+        <div className="detail-box flight-box">
+          <div className="route">
+            <strong>{item.depAirport}</strong> ✈️{" "}
+            <strong>{item.arrAirport}</strong>
+          </div>
+          <div className="route-sub">
+            {item.flightNo} | {item.depTime}
+          </div>
+        </div>
+      )}
 
-                    {/* 機票：橙黃/藍系 */}
-                    {item.type === "機票" && (
-                      <div className="detail-box flight-box">
-                        <div className="route">
-                          <strong>{item.depAirport}</strong> ✈️{" "}
-                          <strong>{item.arrAirport}</strong>
-                        </div>
-                        <div className="route-sub">
-                          {item.flightNo} | {item.depTime}
-                        </div>
-                      </div>
-                    )}
+      {/* 餐廳：綠系 */}
+      {item.type === "餐廳" && (
+        <div className="detail-box restaurant-box">
+          <div className="time-val">
+            🍴 {item.checkIn} | {item.location}
+          </div>
+        </div>
+      )}
 
-                    {/* 餐廳：綠系 */}
-                    {item.type === "餐廳" && (
-                      <div className="detail-box restaurant-box">
-                        <div className="time-val">
-                          🍴 {item.checkIn} | {item.location}
-                        </div>
-                      </div>
-                    )}
+      {/* 其他：灰色系 */}
+      {item.type !== "酒店" &&
+        item.type !== "機票" &&
+        item.type !== "餐廳" && (
+          <div className="detail-box common-box">
+            📅 {item.checkIn || "未定日期"}
+          </div>
+        )}
+    </div>
+  </div>
 
-                    {/* 其他：灰色系 */}
-                    {item.type !== "酒店" &&
-                      item.type !== "機票" &&
-                      item.type !== "餐廳" && (
-                        <div className="detail-box common-box">
-                          📅 {item.checkIn || "未定日期"}
-                        </div>
-                      )}
-                  </div>
-                </div>
+
+                  
+                
               ))}
             </div>
           );
         })}
+      </div>
       </div>
     </div>
   );

@@ -57,8 +57,8 @@ const ItemListTab = ({ tripId }) => {
 
   return (
     <div className="tab-container">
-      <header className="header-with-action">
-        <h1 className="title">有咩要做</h1>
+      <header className="tab-header">
+        <h1>有咩要做</h1>
       </header>
       {/* 1. 統計卡片 */}
       <div className="summary-cards">

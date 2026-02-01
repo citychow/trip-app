@@ -7,7 +7,7 @@ const FlightForm = ({ data, updateData }) => (
       <input
         className="input-field"
         placeholder="e.g. CX504"
-        value={data.flightNo}
+        value={data.flightNo|| ""}
         onChange={(e) => updateData({ flightNo: e.target.value })}
       />
     </div>
@@ -17,14 +17,14 @@ const FlightForm = ({ data, updateData }) => (
         <input
           className="input-field"
           placeholder="HKG"
-          value={data.depAirport}
+          value={data.depAirport|| ""}
           onChange={(e) => updateData({ depAirport: e.target.value })}
         />
         <input
           type="datetime-local"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.depTime}
+          value={data.depTime|| ""}
           onChange={(e) => updateData({ depTime: e.target.value })}
         />
       </div>
@@ -33,14 +33,14 @@ const FlightForm = ({ data, updateData }) => (
         <input
           className="input-field"
           placeholder="NRT"
-          value={data.arrAirport}
+          value={data.arrAirport|| ""}
           onChange={(e) => updateData({ arrAirport: e.target.value })}
         />
         <input
           type="datetime-local"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.arrTime}
+          value={data.arrTime|| ""}
           onChange={(e) => updateData({ arrTime: e.target.value })}
         />
       </div>
@@ -51,7 +51,7 @@ const FlightForm = ({ data, updateData }) => (
         <input
           className="input-field"
           placeholder="T1 / 25"
-          value={data.terminal}
+          value={data.terminal|| ""}
           onChange={(e) => updateData({ terminal: e.target.value })}
         />
       </div>
@@ -60,7 +60,7 @@ const FlightForm = ({ data, updateData }) => (
         <input
           className="input-field"
           placeholder="32K"
-          value={data.seat}
+          value={data.seat|| ""}
           onChange={(e) => updateData({ seat: e.target.value })}
         />
       </div>

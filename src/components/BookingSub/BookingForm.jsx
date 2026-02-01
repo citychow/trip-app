@@ -5,8 +5,8 @@ import RestaurantForm from "./RestaurantForm";
 import TransportForm from "./TransportForm";
 import EventForm from "./EventForm";
 
-const BookingForm = ({ onSave, onCancel }) => {
-  const [formData, setFormData] = useState({
+const BookingForm = ({ onSave, onCancel, initialData }) => {
+  const [formData, setFormData] = useState(initialData ||{
     type: "酒店",
     name: "",
     checkInTime: "15:00",

@@ -5,29 +5,26 @@ const ItineraryItem = ({ activity, onDelete, onEdit }) => {
     <div className="itinerary-item">
       <div className="time-box">{activity.time}</div>
       <div className="activity-content">
-        <div
-          style={{
-            fontWeight: "600",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
+        <div className="activity-box"
         >
           <span>{activity.content}</span>
-          <button
-            onClick={() => onDelete(activity.id)}
-            className="delete-small-btn"
-          >
-            ✕
-          </button>
+          
+          <div className="item-actions">
+        <button className="edit-btn" onClick={onEdit}>
+          ✏️
+        </button>
+        <button className="del-btn" onClick={() => onDelete(activity.id)}>
+          ×
+        </button>
+      </div>
         </div>
         {activity.location && (
           <a
             href={activity.location}
             target="_blank"
             rel="noreferrer"
-            style={{ fontSize: "11px", color: "#FF8A8A" }}
-          >
-            📍 查看地圖
+          ><div className="map-title">
+            📍 查看地圖 </div>
           </a>
         )}
       </div>

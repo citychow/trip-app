@@ -21,7 +21,7 @@ const BillingTab = ({ tripId }) => {
 
   return (
     <div className="tab-container billing-page">
-      <header className="header-with-action">
+      <header className="tab-header">
         <h1 className="title">開支預算</h1>
       </header>
 

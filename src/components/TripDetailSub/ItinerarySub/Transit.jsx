@@ -1,23 +1,30 @@
 import React from "react";
 
-const Transit = ({ activity }) => {
+const Transit = ({ fromActivity, toActivity }) => {
+  const handleOpenMaps = () => {
+    // Encode the locations for the URL
+    const origin = encodeURIComponent(fromActivity.location);
+    const destination = encodeURIComponent(toActivity.location);
+
+    // Official Google Maps Directions URL
+    const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=transit`;
+
+    window.open(mapsUrl, "_blank");
+  };
+
   return (
     <div className="transit-connector">
-      <div
-        className="transit-info-pill"
-        onClick={() => {
-          const from = activity.location || activity.content;
-          const to =
-            activities[index + 1].location || activities[index + 1].content;
-          window.open(
-            `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
-              from
-            )}&destination=${encodeURIComponent(to)}&travelmode=transit`
-          );
-        }}
+      {/* Decorative dashed line to visual link the items */}
+      <div className="transit-line"></div>
+      
+      <button 
+        className="transit-info-pill" 
+        onClick={handleOpenMaps}
+        title="開啟 Google Maps 導航"
       >
-        🚗
-      </div>
+        <span className="transit-icon">🚌</span>
+        <span className="transit-text">查看路線</span>
+      </button>
     </div>
   );
 };

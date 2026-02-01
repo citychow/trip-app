@@ -4,34 +4,24 @@ const LandingPage = ({ trips, setScreen, setSelectedTrip, deleteTrip }) => {
   const [activeMenuTrip, setActiveMenuTrip] = useState(null);
 
   return (
-    <>
-      <header className="header">
-        <h1 className="title"> 去旅行啦 </h1>
+    <><div className="container">
+      <header>
+        <h1> 去旅行啦 </h1>
       </header>
 
-      <div className="trip-list">
+      <div>
         {trips.map((trip) => (
           <div key={trip.id} className="trip-card">
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
+            <div className="trip-card-box">
               <div>
-                <h2 style={{ fontSize: "18px", margin: "0 0 10px 0" }}>
+                <h2 className="trip-title">
                   {trip.name}
                 </h2>
                 <div className="trip-meta">
-                  <span
-                    style={{ color: "var(--primary-pink)", fontWeight: "bold" }}
-                  >
-                    {trip.country}
-                  </span>
+                  <span className="country-tag">{trip.country}</span>
                   <span> • </span>
-                  <span>
-                    {trip.startDate} - {trip.endDate} ({trip.days} Days)
+                  <span className="duration-tag">
+                    {trip.days} Days
                   </span>
                 </div>
                 {trip.desc && <div className="trip-desc">{trip.desc}</div>}
@@ -98,6 +88,7 @@ const LandingPage = ({ trips, setScreen, setSelectedTrip, deleteTrip }) => {
         >
           + 添加一個旅程
         </button>
+      </div>
       </div>
     </>
   );

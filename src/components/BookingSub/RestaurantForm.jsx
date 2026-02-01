@@ -6,7 +6,7 @@ const RestaurantForm = ({ data, updateData }) => (
       <label>餐廳名稱</label>
       <input
         className="input-field"
-        value={data.name}
+        value={data.name|| ""}
         onChange={(e) => updateData({ name: e.target.value })}
       />
     </div>
@@ -14,7 +14,7 @@ const RestaurantForm = ({ data, updateData }) => (
       <label>地點 / 地址</label>
       <input
         className="input-field"
-        value={data.location}
+        value={data.location|| ""}
         onChange={(e) => updateData({ location: e.target.value })}
       />
     </div>
@@ -22,7 +22,7 @@ const RestaurantForm = ({ data, updateData }) => (
       <label>地圖連結</label>
       <input
         className="input-field"
-        value={data.addressLink}
+        value={data.addressLink|| ""}
         onChange={(e) => updateData({ addressLink: e.target.value })}
       />
     </div>
@@ -31,7 +31,7 @@ const RestaurantForm = ({ data, updateData }) => (
       <input
         type="datetime-local"
         className="input-field"
-        value={data.checkIn}
+        value={data.checkIn|| ""}
         onChange={(e) => updateData({ checkIn: e.target.value })}
       />
     </div>

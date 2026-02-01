@@ -7,7 +7,7 @@ const TransportForm = ({ data, updateData }) => (
       <input
         className="input-field"
         placeholder="e.g. Toyota Rent-a-car / JR Pass"
-        value={data.name}
+        value={data.name|| ""}
         onChange={(e) => updateData({ name: e.target.value })}
       />
     </div>
@@ -16,7 +16,7 @@ const TransportForm = ({ data, updateData }) => (
       <input
         className="input-field"
         placeholder="Confirmation #"
-        value={data.bookingNo}
+        value={data.bookingNo|| ""}
         onChange={(e) => updateData({ bookingNo: e.target.value })}
       />
     </div>
@@ -26,14 +26,14 @@ const TransportForm = ({ data, updateData }) => (
         <input
           type="date"
           className="input-field"
-          value={data.checkIn}
+          value={data.checkIn|| ""}
           onChange={(e) => updateData({ checkIn: e.target.value })}
         />
         <input
           type="time"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.checkInTime}
+          value={data.checkInTime|| ""}
           onChange={(e) => updateData({ checkInTime: e.target.value })}
         />
       </div>
@@ -42,14 +42,14 @@ const TransportForm = ({ data, updateData }) => (
         <input
           type="date"
           className="input-field"
-          value={data.checkOut}
+          value={data.checkOut|| ""}
           onChange={(e) => updateData({ checkOut: e.target.value })}
         />
         <input
           type="time"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.checkOutTime}
+          value={data.checkOutTime|| ""}
           onChange={(e) => updateData({ checkOutTime: e.target.value })}
         />
       </div>
@@ -59,7 +59,7 @@ const TransportForm = ({ data, updateData }) => (
       <input
         className="input-field"
         placeholder="Pickup Location"
-        value={data.pickupLocation}
+        value={data.pickupLocation|| ""}
         onChange={(e) => updateData({ pickupLocation: e.target.value })}
       />
     </div>

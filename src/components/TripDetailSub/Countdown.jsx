@@ -41,10 +41,10 @@ const Countdown = ({ startDate }) => {
 
   return (
     <div className="countdown-card">
-      <div style={{ fontSize: "14px", color: "#888" }}>
+      <div className="timer-text1">
         {timeLeft.isStarted ? "Status" : "距離出發"}
       </div>
-      <div className="timer-text">
+      <div className="timer-text2">
         {timeLeft.isStarted ? (
           timeLeft.hms
         ) : (
@@ -54,7 +54,7 @@ const Countdown = ({ startDate }) => {
           </>
         )}
       </div>
-      <div style={{ fontSize: "12px", color: "#BBB", marginTop: "5px" }}>
+      <div className="timer-text3">
         {startDate} 出發
       </div>
     </div>

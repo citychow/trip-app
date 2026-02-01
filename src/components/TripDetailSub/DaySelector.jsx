@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const DaySelector = ({ days, startDate, activeDay, onSelectDay }) => {
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 240; 
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const getDayDetails = (dayNumber) => {
     const start = new Date(startDate);
     const targetDate = new Date(start);
@@ -13,48 +25,55 @@ const DaySelector = ({ days, startDate, activeDay, onSelectDay }) => {
     };
   };
 
-  // SUB TITLE BAR
-  // 呢度仲保留一個簡單嘅 helper，用嚟顯示 Header 嗰行（Day X 行程）
-  const getHeaderDate = (dayNum) => {
-    const d = new Date(startDate);
-    d.setDate(d.getDate() + (dayNum - 1));
-    return {
-      weekday: d.toLocaleDateString("en-US", { weekday: "short" }),
-      date: d.getDate(),
-      month: d.toLocaleDateString("en-US", { month: "short" }),
-    };
-  };
+  const currentDetails = getDayDetails(activeDay);
 
-  const currentDetails = getHeaderDate(activeDay);
+  const handleSelectDay = (dayNum, event) => {
+    onSelectDay(dayNum);
+    // Smoothly center the clicked card in the viewport
+    event.currentTarget.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest'
+    });
+  };
 
   return (
     <div>
-      <div className="day-selector">
-        {Array.from({ length: days }, (_, i) => i + 1).map((dayNum) => {
-          const d = getDayDetails(dayNum);
-          return (
-            <div
-              key={dayNum}
-              className={`day-card ${activeDay === dayNum ? "active" : ""}`}
-              onClick={() => onSelectDay(dayNum)}
-            >
-              <div className="weekday">{d.weekday}</div>
-              <div className="date-num">{d.date}</div>
-            </div>
-          );
-        })}
+      <div className="day-selector-wrapper">
+        <button className="nav-btn left" onClick={() => scroll("left")}>‹</button>
+
+        <div className="day-selector" ref={scrollRef}>
+          {Array.from({ length: days }, (_, i) => i + 1).map((dayNum) => {
+            const d = getDayDetails(dayNum);
+            return (
+              <div
+                key={dayNum}
+                className={`day-card ${activeDay === dayNum ? "active" : ""}`}
+                // Use handleSelectDay to trigger the scroll-into-view logic
+                onClick={(e) => handleSelectDay(dayNum, e)}
+              >
+                <div className="weekday">{d.weekday}</div>
+                <div className="date-num">{d.date}</div>
+              </div>
+            );
+          })}
+        </div>
+
+        <button className="nav-btn right" onClick={() => scroll("right")}>›</button>
       </div>
-      <div style={{ padding: "0 10px", marginBottom: "15px" }}>
-        <span style={{ color: "#FF8A8A", fontWeight: "bold" }}>
+
+      {/* Trip Details Header */}
+      <div className="header-box">
+        <span className="weekday">
           {currentDetails.weekday}{" "}
         </span>
-        <span style={{ fontSize: "24px", fontWeight: "900" }}>
+        <span className="date">
           {currentDetails.date}
         </span>
-        <span style={{ color: "#888", marginLeft: "5px" }}>
+        <span className="month">
           {currentDetails.month}
         </span>
-        <h2 style={{ margin: "5px 0" }}>Day {activeDay} 行程</h2>
+        <h2>Day {activeDay} 行程</h2>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const HotelForm = ({ data, updateData }) => (
       <label>酒店名稱 (Must)</label>
       <input
         className="input-field"
-        value={data.name}
+        value={data.name|| ""}
         onChange={(e) => updateData({ name: e.target.value })}
         required
       />
@@ -15,7 +15,7 @@ const HotelForm = ({ data, updateData }) => (
       <label>預約編號</label>
       <input
         className="input-field"
-        value={data.bookingNo}
+        value={data.bookingNo|| ""}
         onChange={(e) => updateData({ bookingNo: e.target.value })}
       />
     </div>
@@ -25,6 +25,7 @@ const HotelForm = ({ data, updateData }) => (
         <input
           type="date"
           className="input-field"
+          value={data.checkInTime || ""}
           onChange={(e) => updateData({ checkIn: e.target.value })}
         />
       </div>
@@ -33,6 +34,7 @@ const HotelForm = ({ data, updateData }) => (
         <input
           type="date"
           className="input-field"
+          value={data.checkOutTime || ""}
           onChange={(e) => updateData({ checkOut: e.target.value })}
         />
       </div>
