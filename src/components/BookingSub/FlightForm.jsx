@@ -1,67 +1,95 @@
 import React from "react";
 
-const FlightForm = ({ data, updateData }) => (
+const FlightForm = ({ data, updateData,readOnly }) => (
   <>
-    <div className="form-group">
+  
+    <div className="input-group">
       <label>航班編號 (Flight No.)</label>
       <input
         className="input-field"
         placeholder="e.g. CX504"
-        value={data.flightNo|| ""}
-        onChange={(e) => updateData({ flightNo: e.target.value })}
+        value={data.name|| ""}
+        disabled={readOnly}
+        onChange={(e) => updateData({ name: e.target.value })}
       />
     </div>
     <div className="date-row">
-      <div className="form-group date-group">
+      <div className="input-group date-group">
         <label>出發地 (Dep)</label>
         <input
           className="input-field"
           placeholder="HKG"
           value={data.depAirport|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ depAirport: e.target.value })}
         />
+        <div className="input-group date-group">
+        <label>Departure</label>
         <input
-          type="datetime-local"
+          type="date"
+          className="input-field"
+          value={data.checkIn|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ checkIn: e.target.value })}
+        />
+        <input
+          type="time"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.depTime|| ""}
-          onChange={(e) => updateData({ depTime: e.target.value })}
+          value={data.checkInTime|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ checkInTime: e.target.value })}
         />
       </div>
-      <div className="form-group date-group">
+      </div>
+      <div className="input-group date-group">
         <label>目的地 (Arr)</label>
         <input
           className="input-field"
           placeholder="NRT"
           value={data.arrAirport|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ arrAirport: e.target.value })}
         />
+        <div className="input-group date-group">
+        <label>Arrival</label>
         <input
-          type="datetime-local"
+          type="date"
+          className="input-field"
+          value={data.checkOut|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ checkOut: e.target.value })}
+        />
+        <input
+          type="time"
           className="input-field"
           style={{ marginTop: "5px" }}
-          value={data.arrTime|| ""}
-          onChange={(e) => updateData({ arrTime: e.target.value })}
+          value={data.checkOutTime|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ checkOutTime: e.target.value })}
         />
+      </div>
       </div>
     </div>
     <div className="date-row">
-      <div className="form-group date-group">
+      <div className="input-group date-group">
         <label>客運大樓 / 閘口</label>
         <input
           className="input-field"
           placeholder="T1 / 25"
-          value={data.terminal|| ""}
-          onChange={(e) => updateData({ terminal: e.target.value })}
+          value={data.depTerminal|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ depTerminal: e.target.value })}
         />
       </div>
-      <div className="form-group date-group">
-        <label>座位</label>
+      <div className="input-group date-group">
+        <label>客運大樓 / 閘口</label>
         <input
           className="input-field"
-          placeholder="32K"
-          value={data.seat|| ""}
-          onChange={(e) => updateData({ seat: e.target.value })}
+          placeholder="T1 / 25"
+          value={data.arrTerminal|| ""}
+          disabled={readOnly}
+          onChange={(e) => updateData({ arrTerminal: e.target.value })}
         />
       </div>
     </div>

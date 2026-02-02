@@ -665,7 +665,166 @@ body {
   color: #ffb5b5;
 }
 
+/* 地點列樣式 */
+.card-sub-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #7A6F5D;
+}
 
+.location-icon { font-size: 12px; }
+
+/* 數據內容網格 - 參考草圖的兩側對齊 */
+.card-content-grid {
+  padding-top: 5px;
+}
+
+.grid-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-col label {
+  font-size: 11px;
+  color: #9B9284;
+  display: block;
+}
+
+.data-col .val {
+  font-size: 14px;
+  color: #5D5447;
+  font-weight: 500;
+}
+
+.small-time {
+  font-size: 12px;
+  color: #9B9284;
+  margin-left: 5px;
+}
+
+/* 機票專用排列 */
+.flight-grid {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #5D5447;
+}
+
+.time-val { font-weight: 500; }
+/* 機票專用排列 */
+.flight-grid {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.airport { font-weight: 600; color: #5D5447; }
+
+.readonly-view .input-field {
+  background-color: #F0EBE3; /* 變灰一點 */
+  border: 1px transparent;
+  color: #7A6F5D;
+  cursor: not-allowed;
+}
+
+.preview-section img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #EEE;
+}
+
+/* 讓 Details 掣更有草圖感 */
+.details-btn {
+  background: white;
+  border: 1.5px solid #5D5447;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.details-btn:active {
+  background: #5D5447;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/* Container for the flight details */
+.flight-box {
+  background-color: #fff9f4; /* Light orange-ish background like image */
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Individual rows for From and To */
+.flight-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Specific styling for keys like From/To */
+.info-label {
+  width: 40px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Highlighted Airport Codes */
+.info-airport {
+  color: #f39c12; /* Brand orange color */
+  font-weight: 700;
+  min-width: 35px;
+}
+
+/* Terminal info styling */
+.info-terminal {
+  color: #d35400;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* Date and Time styling */
+.info-datetime {
+  margin-left: auto; /* Pushes time to the right */
+  color: #666;
+  font-family: monospace; /* Clearer for numbers */
+}
+
+/* Footer for Flight Name */
+.flight-footer {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px dashed #edccaf;
+}
 
 
 /* --- New Trip輸入 Form --- */
@@ -1051,7 +1210,6 @@ body {
 .booking-card.type-酒店 {
   border-left-color: #ffb5b5;
 }
-
 
 /* 機票 - 橙黃系 */
 .booking-card.type-機票 {

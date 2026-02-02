@@ -1,8 +1,8 @@
 import React from "react";
 
-const TransportForm = ({ data, updateData }) => (
+const TransportForm = ({ data, updateData,readOnly }) => (
   <>
-    <div className="form-group">
+    <div className="input-group">
       <label>項目 / 公司名稱 (租車公司或交通工具)</label>
       <input
         className="input-field"
@@ -11,22 +11,24 @@ const TransportForm = ({ data, updateData }) => (
         onChange={(e) => updateData({ name: e.target.value })}
       />
     </div>
-    <div className="form-group">
+    <div className="input-group">
       <label>預約編號 (Booking No.)</label>
       <input
         className="input-field"
         placeholder="Confirmation #"
         value={data.bookingNo|| ""}
+        disabled={readOnly}
         onChange={(e) => updateData({ bookingNo: e.target.value })}
       />
     </div>
     <div className="date-row">
-      <div className="form-group date-group">
+      <div className="input-group date-group">
         <label>開始 / 取車日期</label>
         <input
           type="date"
           className="input-field"
           value={data.checkIn|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ checkIn: e.target.value })}
         />
         <input
@@ -34,15 +36,17 @@ const TransportForm = ({ data, updateData }) => (
           className="input-field"
           style={{ marginTop: "5px" }}
           value={data.checkInTime|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ checkInTime: e.target.value })}
         />
       </div>
-      <div className="form-group date-group">
+      <div className="input-group date-group">
         <label>結束 / 還車日期</label>
         <input
           type="date"
           className="input-field"
           value={data.checkOut|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ checkOut: e.target.value })}
         />
         <input
@@ -50,6 +54,7 @@ const TransportForm = ({ data, updateData }) => (
           className="input-field"
           style={{ marginTop: "5px" }}
           value={data.checkOutTime|| ""}
+          disabled={readOnly}
           onChange={(e) => updateData({ checkOutTime: e.target.value })}
         />
       </div>
@@ -60,6 +65,7 @@ const TransportForm = ({ data, updateData }) => (
         className="input-field"
         placeholder="Pickup Location"
         value={data.pickupLocation|| ""}
+        disabled={readOnly}
         onChange={(e) => updateData({ pickupLocation: e.target.value })}
       />
     </div>

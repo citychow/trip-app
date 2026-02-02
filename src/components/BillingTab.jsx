@@ -20,6 +20,7 @@ const BillingTab = ({ tripId }) => {
   };
 
   return (
+    <div className="container">
     <div className="tab-container billing-page">
       <header className="tab-header">
         <h1 className="title">開支預算</h1>
@@ -43,6 +44,7 @@ const BillingTab = ({ tripId }) => {
         spends={billingData.spends}
         onUpdateSpends={(s) => updateBilling({ spends: s })}
       />
+    </div>
     </div>
   );
 };

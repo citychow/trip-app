@@ -45,6 +45,7 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
             <input
               placeholder="例如：Osaka 2026"
               value={formData.name}
+              className="input-field"
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
@@ -57,13 +58,13 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
             <input
               placeholder="例如：Japan"
               value={formData.country}
+              className="input-field"
               onChange={(e) =>
                 setFormData({ ...formData, country: e.target.value })
               }
             />
           </div>
 
-          {/* 日期 Row - 解決 Overflow 重災區 */}
           <div className="date-row">
             <div className="input-group date-group">
               <label>第一日</label>
@@ -101,6 +102,7 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
               type="text"
               placeholder="寫低你想去嘅地方或者特別要留意嘅嘢..."
               value={formData.desc}
+              className="input-field"
               onChange={(e) =>
                 setFormData({ ...formData, desc: e.target.value })
               }
