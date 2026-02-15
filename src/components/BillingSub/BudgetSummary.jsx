@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 
-const BudgetSummary = ({ budget, spends, onUpdateBudget }) => {
+const BudgetSummary = ({
+  budget,
+  spends,
+  currency = "HK$",
+  onUpdateBudget,
+  onUpdateCurrency,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [tempBudget, setTempBudget] = useState(budget);
+
+  // Available currency options
+  const currencies = ["HK$", "JP¥", "US$", "TWD", "EUR"];
 
   // 計算總花費 (假設金額已在傳入前換算好，或在此處計算)
   const totalSpent = spends.reduce(
@@ -36,6 +45,20 @@ const BudgetSummary = ({ budget, spends, onUpdateBudget }) => {
     <div className="budget-card">
       <div className="budget-header">
         <span className="label">總預算</span>
+        <div className="currency-selector-wrap">
+          <select
+            value={currency}
+            onChange={(e) => onUpdateCurrency(e.target.value)}
+            className="currency-select"
+          >
+            {currencies.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+
         {isEditing ? (
           <div className="edit-input-group">
             <input
@@ -48,7 +71,7 @@ const BudgetSummary = ({ budget, spends, onUpdateBudget }) => {
           </div>
         ) : (
           <span className="value" onClick={() => setIsEditing(true)}>
-            HK$ {budget.toLocaleString()} ✍️
+            {currency} {budget.toLocaleString()} ✍️
           </span>
         )}
       </div>
@@ -65,9 +88,11 @@ const BudgetSummary = ({ budget, spends, onUpdateBudget }) => {
           ></div>
         </div>
         <div className="progress-info">
-          <span>已花費: HK$ {totalSpent.toLocaleString()}</span>
+          <span>
+            已花費: {currency} {totalSpent.toLocaleString()}
+          </span>
           <span className={remaining < 0 ? "negative" : ""}>
-            剩餘: HK$ {remaining.toLocaleString()}
+            剩餘: {currency} {remaining.toLocaleString()}
           </span>
         </div>
       </div>
