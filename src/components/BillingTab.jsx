@@ -8,10 +8,10 @@ const BillingTab = ({ tripId }) => {
     const saved = localStorage.getItem(`billing_${tripId}`);
     return saved
       ? JSON.parse(saved)
-      : { budget: 0, spends: [], exchangeRate: 1 };
+      : { budget: 0, spends: [], exchangeRate: 1, currency: "HK$" };
   });
 
-  const [currency, setCurrency] = useState("HK$");
+  // const [currency, setCurrency] = useState("HK$");
 
   useEffect(() => {
     localStorage.setItem(`billing_${tripId}`, JSON.stringify(billingData));
@@ -39,9 +39,9 @@ const BillingTab = ({ tripId }) => {
         <BudgetSummary
           budget={billingData.budget}
           spends={billingData.spends}
-          currency={currency}
+          currency={billingData.currency}
           onUpdateBudget={(b) => updateBilling({ budget: b })}
-          onUpdateCurrency={setCurrency}
+          onUpdateCurrency={(c) => updateBilling({ currency: c })}
         />
 
         {/* 3. 消費紀錄清單 */}
