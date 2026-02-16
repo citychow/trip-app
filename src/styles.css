@@ -107,6 +107,47 @@ body {
   color: #bbb;
 }
 
+.btn-confirm-sm {
+  background-color: #ffb5b5; /* Matching your theme pink */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(255, 181, 181, 0.3);
+}
+
+.btn-confirm-sm:hover {
+  background-color: #ff9a9a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 181, 181, 0.4);
+}
+
+.btn-confirm-sm:active {
+  transform: translateY(0);
+  filter: brightness(0.9);
+}
+
+.btn-cancel-sm {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.btn-cancel-text:hover {
+  color: #ff6b6b; /* Turns slightly red on hover to indicate "stop/cancel" */
+  text-decoration: underline;
+}
+
 /* Landing Page 容器 */
 .trip-card {
   position: relative;
@@ -854,11 +895,257 @@ body {
 }
 
 /* Billing Tab */
+/* Billing Tab - Currency Exchange */
+.currency-card {
+  background: white;
+  margin: 15px;
+  padding: 18px;
+  border-radius: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0eae3;
+}
 
-.currency-selector-wrap {
+.currency-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.header-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px; /* Label 同 Selector 之間嘅距離 */
+}
+
+.currency-selector-inline {
+  border: 1px solid #ffebeb;
+  background: #fff9f9;
+  color: #ffb5b5;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  /* 移除預設樣式嘅箭頭 (可選) */
+  /* appearance: none;
+  -webkit-appearance: none;
+  text-align: center; */
+}
+
+.rate-info-tag {
+  font-size: 11px;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.refresh-small-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 10px;
+}
+
+/* 計算機行數優化 */
+.converter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.input-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 10px 10px;
+  border-radius: 12px;
+}
+
+.unit-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #999;
+  margin-left: 5px;
+}
+
+.refresh-btn {
+  background: none;
+  border: none;
+  color: #ffb5b5; /* 你張圖入面嗰種粉紅色 */
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.input-box input {
+  width: 70%;
+  border: none;
+  background: none;
+  font-size: 18px;
+  outline: none;
+}
+
+.arrow {
+  color: #ffb5b5;
+  font-size: 18px;
+}
+
+/* Billing Tab - Budget Summary */
+.budget-card {
+  background: white;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+.budget-card.empty-state {
+  border: 2px dashed #ffebeb;
+  background: #fffbfb;
+}
+
+.budget-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.add-budget-btn {
+  background-color: #ffb5b5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.budget-header {
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.edit-input-group input {
+  width: 100px;
+  border: 1px solid #ffb5b5;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-right: 5px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #888;
+}
+
+.progress-info .negative {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Billing Tab - Spending List */
+.spending-section {
+  margin: 15px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}
+
+.spend-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.action-icon {
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.action-icon:hover {
+  opacity: 1;
+}
+
+.action-icon.del:hover {
+  color: #ff4d4f;
+}
+
+/* Inline Edit Row Styles */
+.inline-edit-row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.edit-input {
+  flex: 2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+.edit-input-amt {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+/* Billing Tab - Spending List - New Form */
+.quick-add-form {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ffebeb;
+}
+
+.quick-add-form input {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
 }
 
 .item {
@@ -882,6 +1169,63 @@ body {
   background: #f0f7ff;
   padding: 4px 10px;
   border-radius: 6px;
+}
+
+.date-group-header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  cursor: pointer;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+}
+.date-text {
+  font-size: 13px;
+  color: #999;
+}
+.day-sum {
+  font-weight: bold;
+  color: #555;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.arrow-icon {
+  color: #ffb5b5;
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+.arrow-icon.up {
+  transform: rotate(180deg);
+}
+
+/* 展開內容樣式 */
+.date-items-list {
+  background: #faf6f1; /* 稍微深色少少區分返 */
+  padding: 5px 0;
+}
+
+.spend-detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0eae3;
+  font-size: 14px;
+}
+.spend-detail-item:last-child {
+  border-bottom: none;
+}
+.item-desc {
+  color: #666;
+}
+.item-price {
+  font-weight: 500;
+  color: #777;
 }
 
 /* Modal 簡易樣式 */
@@ -1214,11 +1558,6 @@ body {
   font-weight: 500;
 }
 
-/* Billing Tab CSS*/
-.billing-page {
-  background-color: #faf6f1; /* 延續你的米色背景 */
-}
-
 /* 預算卡片樣式 */
 .budget-card {
   background: white;
@@ -1243,340 +1582,6 @@ body {
 .amount-text {
   font-weight: bold;
   color: #555;
-}
-
-/* BudgetSummary CSS */
-/* 預算卡片基礎 */
-.budget-card {
-  background: white;
-  margin: 15px;
-  padding: 25px;
-  border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  text-align: center;
-}
-
-/* 空狀態樣式 */
-.budget-card.empty-state {
-  border: 2px dashed #ffebeb;
-  background: #fffbfb;
-}
-
-.budget-icon {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-.add-budget-btn {
-  background-color: #ffb5b5;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-/* 進度條樣式 */
-.budget-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.budget-header .label {
-  color: #999;
-  font-size: 14px;
-}
-
-.budget-header .value {
-  color: #555;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 12px;
-  background-color: #f0f0f0;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.progress-fill {
-  height: 100%;
-  transition: width 0.5s ease-in-out;
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #888;
-}
-
-.progress-info .negative {
-  color: #ff6b6b;
-  font-weight: bold;
-}
-
-/* 修改輸入框 */
-.edit-input-group input {
-  width: 100px;
-  border: 1px solid #ffb5b5;
-  border-radius: 8px;
-  padding: 4px 8px;
-  margin-right: 5px;
-}
-
-/* SpendingList CSS */
-.spending-section {
-  margin: 15px;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 0 5px;
-}
-
-.date-group-header {
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  cursor: pointer;
-}
-
-.date-info {
-  display: flex;
-  flex-direction: column;
-}
-.date-text {
-  font-size: 13px;
-  color: #999;
-}
-.day-sum {
-  font-weight: bold;
-  color: #555;
-  font-size: 16px;
-  margin-top: 2px;
-}
-
-.arrow-icon {
-  color: #ffb5b5;
-  font-size: 20px;
-  transition: transform 0.3s;
-}
-.arrow-icon.up {
-  transform: rotate(180deg);
-}
-
-/* 展開內容樣式 */
-.date-items-list {
-  background: #faf6f1; /* 稍微深色少少區分返 */
-  padding: 5px 0;
-}
-
-.spend-detail-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-  border-bottom: 1px solid #f0eae3;
-  font-size: 14px;
-}
-.spend-detail-item:last-child {
-  border-bottom: none;
-}
-.item-desc {
-  color: #666;
-}
-.item-price {
-  font-weight: 500;
-  color: #777;
-}
-
-/* 快速新增表單 */
-.quick-add-form {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border: 1px solid #ffebeb;
-}
-
-.quick-add-form input {
-  padding: 10px;
-  border: 1px solid #eee;
-  border-radius: 10px;
-}
-
-/* CurrencyExchange CSS */
-.currency-card {
-  background: white;
-  margin: 15px;
-  padding: 18px;
-  border-radius: 24px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  border: 1px solid #f0eae3;
-}
-
-.currency-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 13px;
-}
-
-.refresh-btn {
-  background: none;
-  border: none;
-  color: #ffb5b5; /* 你張圖入面嗰種粉紅色 */
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.converter-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.input-box,
-.result-box {
-  flex: 1;
-  background: #fffbfb;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.result-box {
-  border-color: #ffb5b5; /* HKD 嗰邊係粉紅邊 */
-}
-
-.input-box input {
-  width: 70%;
-  border: none;
-  background: none;
-  font-size: 18px;
-  outline: none;
-}
-
-.unit,
-.unit-hkd {
-  font-size: 12px;
-  font-weight: bold;
-  color: #999;
-}
-
-.unit-hkd {
-  color: #ffb5b5;
-}
-
-.arrow {
-  color: #ffb5b5;
-  font-size: 18px;
-}
-
-.input-group-wrapper {
-  flex: 1.2;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.currency-selector {
-  border: none;
-  background: #fff9f9;
-  color: #ffb5b5;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 8px;
-  width: fit-content;
-  cursor: pointer;
-  outline: none;
-}
-
-.rate-info-tag {
-  font-size: 11px;
-  color: #bbb;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.refresh-small-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: 10px;
-}
-
-.result-box.highlighted {
-  border: 1px solid #ffb5b5;
-  background: #fffbfb;
-}
-/* 頂部 Header 佈局 */
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Label 同 Selector 之間嘅距離 */
-}
-
-.currency-selector-inline {
-  border: 1px solid #ffebeb;
-  background: #fff9f9;
-  color: #ffb5b5;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  outline: none;
-  /* 移除預設樣式嘅箭頭 (可選) */
-  appearance: none;
-  -webkit-appearance: none;
-  text-align: center;
-}
-
-/* 計算機行數優化 */
-.converter-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.input-box {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  background: #fafafa;
-  border: 1px solid #eee;
-  padding: 10px 15px;
-  border-radius: 12px;
-}
-
-.unit-label {
-  font-size: 11px;
-  font-weight: bold;
-  color: #999;
-  margin-left: 5px;
 }
 
 /* Shopping Tab CSS */

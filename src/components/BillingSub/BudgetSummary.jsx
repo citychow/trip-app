@@ -11,7 +11,7 @@ const BudgetSummary = ({
   const [tempBudget, setTempBudget] = useState(budget);
 
   // Available currency options
-  const currencies = ["HK$", "JP¥", "US$", "TWD", "EUR"];
+  const currencies = ["HKD", "JPY", "USD", "TWD", "EUR"];
 
   // 計算總花費 (假設金額已在傳入前換算好，或在此處計算)
   const totalSpent = spends.reduce(
@@ -43,13 +43,14 @@ const BudgetSummary = ({
 
   return (
     <div className="budget-card">
-      <div className="budget-header">
-        <span className="label">總預算</span>
-        <div className="currency-selector-wrap">
+      <div className="currency-header">
+        <div className="header-left">
+          <span>總預算</span>
+
           <select
             value={currency}
             onChange={(e) => onUpdateCurrency(e.target.value)}
-            className="currency-select"
+            className="currency-selector-inline"
           >
             {currencies.map((c) => (
               <option key={c} value={c}>
@@ -58,7 +59,6 @@ const BudgetSummary = ({
             ))}
           </select>
         </div>
-
         {isEditing ? (
           <div className="edit-input-group">
             <input
@@ -67,10 +67,10 @@ const BudgetSummary = ({
               onChange={(e) => setTempBudget(e.target.value)}
               autoFocus
             />
-            <button onClick={handleSave}>儲存</button>
+            <span onClick={handleSave}>✔️</span>
           </div>
         ) : (
-          <span className="value" onClick={() => setIsEditing(true)}>
+          <span className="budget-header" onClick={() => setIsEditing(true)}>
             {currency} {budget.toLocaleString()} ✍️
           </span>
         )}

@@ -58,16 +58,31 @@ const CurrencyExchange = ({ tripCountry, onRateUpdate }) => {
     fetchLiveRate(selectedCurrency);
   }, [selectedCurrency]);
 
-  const handleConvert = (val) => {
+  // Direction A: Foreign -> HKD
+  const handleForeignChange = (val) => {
     setForeignAmount(val);
-    setHkdAmount((val * currentRate).toFixed(2));
+    if (!val) {
+      setHkdAmount("");
+      return;
+    }
+    setHkdAmount((parseFloat(val) * currentRate).toFixed(2));
+  };
+
+  // Direction B: HKD -> Foreign
+  const handleHkdChange = (val) => {
+    setHkdAmount(val);
+    if (!val || currentRate === 0) {
+      setForeignAmount("");
+      return;
+    }
+    setForeignAmount((parseFloat(val) / currentRate).toFixed(2));
   };
 
   return (
     <div className="currency-card">
       <div className="currency-header">
         <div className="header-left">
-          <span className="label">匯率計算機</span>
+          <span>匯率計算機</span>
           <select
             className="currency-selector-inline"
             value={selectedCurrency}
@@ -83,7 +98,7 @@ const CurrencyExchange = ({ tripCountry, onRateUpdate }) => {
         <div className="rate-info-tag">
           {loading
             ? "更新中..."
-            : `1 ${selectedCurrency} = ${currentRate.toFixed(4)} HKD`}
+            : `1 HKD ≈ ${(1 / currentRate).toFixed(4)} ${selectedCurrency}`}
           <button
             className="refresh-small-btn"
             onClick={() => fetchLiveRate(selectedCurrency)}
@@ -94,24 +109,32 @@ const CurrencyExchange = ({ tripCountry, onRateUpdate }) => {
       </div>
 
       <div className="converter-row">
-        {/* 左邊：手動選擇貨幣 + 輸入金額 */}
-        <div className="input-group-wrapper">
+        {/* HKD Input (Now Editable) */}
+        <div>
+          <div className="input-box">
+            <input
+              type="number"
+              placeholder="0"
+              value={hkdAmount}
+              onChange={(e) => handleHkdChange(e.target.value)}
+            />
+            <span className="unit-label">HKD</span>
+          </div>
+        </div>
+
+        <span className="arrow">⇄</span>
+        {/* Right：手動選擇貨幣 + 輸入金額 */}
+        <div>
           <div className="input-box">
             <input
               type="number"
               placeholder="0"
               value={foreignAmount}
-              onChange={(e) => handleConvert(e.target.value)}
+              onChange={(e) => handleForeignChange(e.target.value)}
             />
+
+            <span className="unit-label">{selectedCurrency}</span>
           </div>
-        </div>
-
-        <span className="arrow">→</span>
-
-        {/* 右邊：HKD 結果 */}
-        <div className="result-box highlighted">
-          <div className="display-val">{hkdAmount}</div>
-          <span className="unit-hkd">HKD</span>
         </div>
       </div>
     </div>

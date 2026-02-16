@@ -24,9 +24,9 @@ const BillingTab = ({ tripId }) => {
   return (
     <div>
       {/* <div className="container"> */}
-      <div className="tab-container billing-page">
+      <div className="tab-container">
         <header className="tab-header">
-          <h1 className="title">開支預算</h1>
+          <h1>洗咩錢</h1>
         </header>
 
         {/* 1. 匯率轉換組件 */}
@@ -47,6 +47,7 @@ const BillingTab = ({ tripId }) => {
         {/* 3. 消費紀錄清單 */}
         <SpendingList
           spends={billingData.spends}
+          currency={billingData.currency}
           onUpdateSpends={(s) => updateBilling({ spends: s })}
         />
       </div>

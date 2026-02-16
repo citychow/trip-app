@@ -83,7 +83,7 @@ const BookingTab = ({ tripId }) => {
     <div>
       <div className="tab-container" onClick={handleContainerClick}>
         <header className="tab-header">
-          <h1>預約紀錄</h1>
+          <h1>Book咗咩</h1>
           <button className="icon-btn-top" onClick={() => setIsAdding(true)}>
             ➕
           </button>
