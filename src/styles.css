@@ -108,7 +108,8 @@ body {
 }
 
 .btn-confirm-sm {
-  background-color: #ffb5b5; /* Matching your theme pink */
+  background-color: #ffb5b5;
+  /* Matching your theme pink */
   color: white;
   border: none;
   border-radius: 6px;
@@ -117,13 +118,11 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(255, 181, 181, 0.3);
 }
 
 .btn-confirm-sm:hover {
   background-color: #ff9a9a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(255, 181, 181, 0.4);
 }
 
 .btn-confirm-sm:active {
@@ -861,12 +860,6 @@ body {
 
 /* --- New Trip輸入 Form --- */
 /* 1. 確保日期容器是 Flex 佈局，並允許換行以防螢幕太窄 */
-.date-row {
-  display: flex;
-  gap: 15px; /* 兩個輸入框之間的間距 */
-  margin-bottom: 20px;
-  width: 100%;
-}
 
 /* 2. 讓每個日期組件各佔一半闊度 */
 .date-group {
@@ -1080,14 +1073,53 @@ body {
   padding: 0 5px;
 }
 
+.date-items-list {
+  background: #faf6f1; /* 稍微深色少少區分返 */
+  padding: 5px 0;
+}
+
 .spend-detail-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0eae3;
+  font-size: 14px;
+}
+.spend-detail-item:last-child {
+  border-bottom: none;
 }
 
+.inline-edit-row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.edit-input {
+  flex: 2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+.edit-input-amt {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+.item-desc {
+  flex: 2;
+  color: #666;
+}
+.item-price {
+  display: flex;
+  flex: 1;
+  font-weight: 500;
+  color: #777;
+}
 .item-actions {
   display: flex;
   gap: 10px;
@@ -1109,27 +1141,6 @@ body {
   color: #ff4d4f;
 }
 
-/* Inline Edit Row Styles */
-.inline-edit-row {
-  display: flex;
-  gap: 5px;
-  width: 100%;
-}
-
-.edit-input {
-  flex: 2;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 2px 5px;
-}
-
-.edit-input-amt {
-  flex: 1;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 2px 5px;
-}
-
 /* Billing Tab - Spending List - New Form */
 .quick-add-form {
   background: white;
@@ -1146,29 +1157,6 @@ body {
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 10px;
-}
-
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #f2f2f7;
-}
-
-.item span {
-  font-weight: 500;
-  color: #3a3a3c;
-}
-
-.map-link {
-  color: #007aff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  background: #f0f7ff;
-  padding: 4px 10px;
-  border-radius: 6px;
 }
 
 .date-group-header {
@@ -1204,28 +1192,29 @@ body {
   transform: rotate(180deg);
 }
 
-/* 展開內容樣式 */
-.date-items-list {
-  background: #faf6f1; /* 稍微深色少少區分返 */
-  padding: 5px 0;
-}
+/* UNKNOWN USE BELOW */
 
-.spend-detail-item {
+.item {
   display: flex;
   justify-content: space-between;
-  padding: 12px 20px;
-  border-bottom: 1px solid #f0eae3;
-  font-size: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f2f2f7;
 }
-.spend-detail-item:last-child {
-  border-bottom: none;
-}
-.item-desc {
-  color: #666;
-}
-.item-price {
+
+.item span {
   font-weight: 500;
-  color: #777;
+  color: #3a3a3c;
+}
+
+.map-link {
+  color: #007aff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  background: #f0f7ff;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
 /* Modal 簡易樣式 */

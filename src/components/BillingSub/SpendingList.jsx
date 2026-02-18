@@ -98,7 +98,7 @@ const SpendingList = ({ spends, onUpdateSpends, currency }) => {
       )}
 
       {/* 分組顯示清單 */}
-      <div className="grouped-list">
+      <div>
         {sortedDates.map((date) => {
           const daySpends = groupedSpends[date];
           const dayTotal = daySpends.reduce(
