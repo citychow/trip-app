@@ -108,6 +108,10 @@ const ShoppingTab = ({ tripId }) => {
     <div className="tab-container">
       <header className="tab-header">
         <h1>有咩要買</h1>
+        {/* 懸浮新增按鈕 */}
+        <button className="icon-btn-top" onClick={() => setIsAdding(true)}>
+          ➕
+        </button>
       </header>
       {/* 統計卡片 - 支援過濾功能 */}
       <div className="summary-cards">
@@ -196,11 +200,6 @@ const ShoppingTab = ({ tripId }) => {
           onEdit={() => handleEditItem(item)} // 新增編輯傳遞
         />
       ))}
-
-      {/* 懸浮新增按鈕 */}
-      <button className="fab-add" onClick={() => setIsAdding(true)}>
-        +
-      </button>
 
       {/* 獨立表單組件 */}
       {isAdding && (

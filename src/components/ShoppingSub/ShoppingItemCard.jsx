@@ -2,7 +2,11 @@ import React from "react";
 
 const ShoppingItemCard = ({ item, onToggle, onDelete, onEdit }) => {
   return (
-    <div className={`shopping-item-card ${item.checked ? "is-done" : ""}`}>
+    <div
+      className={`shopping-item-card bg-${item.importance} ${
+        item.checked ? "is-done" : ""
+      }`}
+    >
       <label className="custom-checkbox">
         <input
           type="checkbox"
@@ -19,16 +23,16 @@ const ShoppingItemCard = ({ item, onToggle, onDelete, onEdit }) => {
         </div>
         <div className="item-info">
           <div className="name-line">
-            <span className="name">{item.name} </span>
-            <span className={`bubble imp-${item.importance}`}>
+            {/* <span className={`bubble imp-${item.importance}`}>
               {item.importance}
-            </span>
+            </span> */}
+            <span className="name">{item.name} </span>
           </div>
           <div className="desc-line">
-            <span className="item-note">{item.note}</span>
             {item.category && (
               <span className="bubble cat">{item.category}</span>
             )}
+            <span className="item-note">{item.note}</span>
           </div>
         </div>
       </div>

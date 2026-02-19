@@ -99,6 +99,11 @@ body {
   padding: 5px;
   cursor: pointer;
 }
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
 .placeholder {
   display: flex;
   justify-content: center;
@@ -1120,11 +1125,6 @@ body {
   font-weight: 500;
   color: #777;
 }
-.item-actions {
-  display: flex;
-  gap: 10px;
-  margin-left: 10px;
-}
 
 .action-icon {
   cursor: pointer;
@@ -1190,6 +1190,273 @@ body {
 }
 .arrow-icon.up {
   transform: rotate(180deg);
+}
+
+/* Shopping Tab */
+.summary-cards {
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+}
+
+.summary-card {
+  flex: 1;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.5px solid #eae2d7;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.summary-card.active {
+  border-color: #ffb5b5;
+  background-color: #fff9f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 181, 181, 0.15);
+}
+
+.summary-info .count {
+  font-size: 28px;
+  font-weight: bold;
+  color: #5d5447;
+  display: block;
+}
+
+.summary-info .label {
+  font-size: 13px;
+  color: #9b9284;
+}
+
+.summary-char {
+  font-size: 24px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-direction: column; /* 改為垂直排列，上面係標題，下面係篩選掣 */
+  gap: 10px;
+  padding: 10px 20px;
+}
+.filter-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.status-title {
+  font-size: 16px;
+  color: #5d5447;
+  font-weight: 600;
+}
+
+.category-dropdown-wrapper {
+  position: relative;
+}
+
+.category-select {
+  background: #eeebe6;
+  border: 1px solid #ded9d1;
+  color: #7a6f5d;
+  padding: 4px 12px;
+  padding-right: 25px; /* 為箭頭留位 */
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none; /* 移除瀏覽器預設樣式 */
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.importance-filter-group {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto; /* 支援橫向捲動 */
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.importance-filter-group::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-pill {
+  white-space: nowrap; /* 避免文字換行 */
+  background: #eeebe6;
+  border: 1px solid #ded9d1;
+  color: #7a6f5d;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-pill.active {
+  background: #ffb5b5;
+  color: white;
+  border-color: #ffb5b5;
+  box-shadow: 0 2px 8px rgba(255, 181, 181, 0.3);
+}
+
+.pill-count {
+  font-size: 10px;
+  opacity: 0.7;
+  font-weight: normal;
+}
+
+.filter-pill.active .pill-count {
+  opacity: 1;
+}
+
+/* Shopping Tab - Shopping Item Card */
+.shopping-item-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  margin: 0 15px 12px;
+  padding: 12px;
+  border-radius: 22px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  border: 1px solid #f0ebe3;
+  position: relative;
+}
+
+.custom-checkbox {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.custom-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #ffb5b5;
+  border-color: #ffb5b5;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: white;
+  border: 2px solid #ded9d1;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.item-content-click {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: #f3f0ec;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-info {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.name-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5d5447;
+}
+
+.bubble {
+  padding: 2px 12px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.imp-一般 {
+  background: #f7efe5;
+  color: #b39f85;
+}
+.imp-重要 {
+  background: #ffebeb;
+  color: #ff8a8a;
+}
+.imp-必買 {
+  background: #ffd9d9;
+  color: #e66767;
+}
+.cat {
+  background: #e8f4f0;
+  color: #7dbdaa;
+}
+
+.desc-line {
+  font-size: 12px;
+  color: #9b9284;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.item-note {
+  font-size: 12px;
+  color: #9b9284;
+  margin: 4px 0;
+}
+
+.bg-一般 {
+  background: #f7efe5;
+  color: #b39f85;
+}
+.bg-重要 {
+  background: #ffebeb;
+  color: #ff8a8a;
+}
+.bg-必買 {
+  background: #ffd9d9;
+  color: #e66767;
+}
+
+.is-done {
+  opacity: 0.6;
+  /* background-color: #fdfdfd; 稍微變白一點點 */
+}
+.is-done .name {
+  text-decoration: line-through;
+  color: #a89f91; /* 轉為較淡的灰色 */
+}
+.is-done .item-note {
+  text-decoration: line-through;
+  opacity: 0.8;
 }
 
 /* UNKNOWN USE BELOW */
@@ -1576,186 +1843,6 @@ body {
 /* Shopping Tab CSS */
 
 /* --- 頂部統計卡片 (復刻 image_6e099f.png) --- */
-.summary-cards {
-  display: flex;
-  gap: 12px;
-  padding: 15px;
-}
-
-.summary-card {
-  flex: 1;
-  background: white;
-  padding: 15px 20px;
-  border-radius: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1.5px solid #eae2d7;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.summary-card.active {
-  border-color: #ffb5b5;
-  background-color: #fff9f9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 181, 181, 0.15);
-}
-
-.summary-info .count {
-  font-size: 28px;
-  font-weight: bold;
-  color: #5d5447;
-  display: block;
-}
-
-.summary-info .label {
-  font-size: 13px;
-  color: #9b9284;
-}
-
-.summary-char {
-  font-size: 24px;
-}
-
-/* --- 篩選 Bar (復刻 image_6da4fb.png) --- */
-.filter-bar {
-  display: flex;
-  flex-direction: column; /* 改為垂直排列，上面係標題，下面係篩選掣 */
-  gap: 10px;
-  padding: 10px 20px;
-}
-
-.status-title {
-  font-size: 16px;
-  color: #5d5447;
-  font-weight: 600;
-}
-
-.all-pill-btn {
-  background: #eeebe6;
-  border: 1px solid #ded9d1;
-  color: #7a6f5d;
-  padding: 5px 18px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* --- 購物卡片 (ShoppingItemCard) --- */
-.shopping-item-card {
-  display: flex;
-  align-items: center;
-  background: white;
-  margin: 0 15px 12px;
-  padding: 12px;
-  border-radius: 22px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-  border: 1px solid #f0ebe3;
-  position: relative;
-}
-
-/* 自定義 Checkbox */
-.custom-checkbox {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  margin-right: 10px;
-}
-
-.custom-checkbox input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 22px;
-  width: 22px;
-  background-color: white;
-  border: 2px solid #ded9d1;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.custom-checkbox input:checked ~ .checkmark {
-  background-color: #ffb5b5;
-  border-color: #ffb5b5;
-}
-
-/* 物品縮圖 */
-.item-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  background: #f3f0ec;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.item-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 資訊區域 */
-.item-info {
-  flex: 1;
-  margin-left: 12px;
-}
-
-.name-line {
-  display: flex;
-  align-items: center;
-  margin-bottom: 4px;
-}
-
-.name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #5d5447;
-}
-
-.desc-line {
-  font-size: 12px;
-  color: #9b9284;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-/* --- Bubble Tags (復刻 image_6e099f.png) --- */
-.bubble {
-  padding: 2px 12px;
-  border-radius: 15px;
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.imp-一般 {
-  background: #f7efe5;
-  color: #b39f85;
-}
-.imp-重要 {
-  background: #ffebeb;
-  color: #ff8a8a;
-}
-.imp-必買 {
-  background: #ffd9d9;
-  color: #e66767;
-}
-.cat {
-  background: #e8f4f0;
-  color: #7dbdaa;
-}
 
 /* --- 新增表單 Modal (AddItemForm) --- */
 .modal-overlay {
@@ -1835,83 +1922,6 @@ body {
   border-color: #ffb5b5;
 }
 
-/* --- 操作按鈕 --- */
-.fab-add {
-  position: fixed;
-  right: 25px;
-  bottom: 90px;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  background: #ffb5b5;
-  color: white;
-  font-size: 32px;
-  border: none;
-  box-shadow: 0 6px 16px rgba(255, 181, 181, 0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99;
-}
-
-.importance-filter-group {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto; /* 支援橫向捲動 */
-  padding-bottom: 5px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.importance-filter-group::-webkit-scrollbar {
-  display: none;
-}
-
-.filter-pill {
-  white-space: nowrap; /* 避免文字換行 */
-  background: #eeebe6;
-  border: 1px solid #ded9d1;
-  color: #7a6f5d;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.filter-pill.active {
-  background: #ffb5b5;
-  color: white;
-  border-color: #ffb5b5;
-  box-shadow: 0 2px 8px rgba(255, 181, 181, 0.3);
-}
-
-.filter-row-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.category-dropdown-wrapper {
-  position: relative;
-}
-
-.category-select {
-  background: #eeebe6;
-  border: 1px solid #ded9d1;
-  color: #7a6f5d;
-  padding: 4px 12px;
-  padding-right: 25px; /* 為箭頭留位 */
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  appearance: none; /* 移除瀏覽器預設樣式 */
-  -webkit-appearance: none;
-  outline: none;
-}
-
 /* 加返一個細細嘅向下箭頭 */
 .category-dropdown-wrapper::after {
   content: "▼";
@@ -1928,35 +1938,12 @@ body {
   border-color: #ffb5b5;
 }
 
-.item-content-click {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.item-actions {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-
 .filter-pill {
   display: flex;
   align-items: center;
   gap: 4px;
   white-space: nowrap;
   /* ... 其他原有樣式 ... */
-}
-
-.pill-count {
-  font-size: 10px;
-  opacity: 0.7;
-  font-weight: normal;
-}
-
-.filter-pill.active .pill-count {
-  opacity: 1;
 }
 
 /* ItemList CSS */
@@ -2019,12 +2006,6 @@ body {
   font-size: 15px;
   font-weight: 600;
   color: #5d5447;
-}
-
-.item-note {
-  font-size: 12px;
-  color: #9b9284;
-  margin: 4px 0;
 }
 
 .item-date {
@@ -2186,31 +2167,4 @@ body {
 
 .icon-btn:hover {
   color: #ffb5b5;
-}
-
-/* --- 已完成項目的樣式 --- */
-
-/* 1. 整體卡片變淡 */
-.is-done {
-  opacity: 0.6;
-  background-color: #fdfdfd; /* 稍微變白一點點 */
-}
-
-/* 2. 標題劃線 */
-.is-done .name {
-  text-decoration: line-through;
-  color: #a89f91; /* 轉為較淡的灰色 */
-}
-
-/* 3. 備註同日期都可以一齊劃線 (選用) */
-.is-done .item-note {
-  text-decoration: line-through;
-  opacity: 0.8;
-}
-
-/* 4. 重要程度氣泡變灰 */
-.is-done .importance-bubble {
-  background: #eeebe6 !important;
-  color: #cdc7bd !important;
-  text-decoration: none; /* 氣泡文字通常唔洗劃線 */
 }
