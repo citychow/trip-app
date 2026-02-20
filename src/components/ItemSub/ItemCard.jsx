@@ -18,10 +18,11 @@ const ItemCard = ({ item, onToggle, onDelete, onEdit }) => {
         <div className="item-info">
           <div className="name-line">
             <div>
-              <span className="name">{item.name}</span>
               <span className={`bubble imp-${item.importance}`}>
                 {item.importance}
               </span>
+              <span> </span>
+              <span className="name">{item.name}</span>
             </div>
           </div>
 
@@ -29,8 +30,8 @@ const ItemCard = ({ item, onToggle, onDelete, onEdit }) => {
             {/* 如果有備註或日期則顯示 */}
             {(item.note || item.date) && (
               <div>
-                {item.note && <span className="item-note">{item.note}</span>}
                 {item.date && <span className="item-date">📅 {item.date}</span>}
+                {item.note && <span className="item-note">{item.note}</span>}
               </div>
             )}
           </div>
@@ -44,7 +45,7 @@ const ItemCard = ({ item, onToggle, onDelete, onEdit }) => {
         </button>
         <button
           className="del-btn"
-          onClick={(e) => {
+          onClick={() => {
             onDelete(item.id);
           }}
         >

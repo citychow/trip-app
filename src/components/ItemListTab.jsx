@@ -27,7 +27,7 @@ const ItemListTab = ({ tripId }) => {
 
   const handleDelete = (id) => {
     if (window.confirm("確定要刪除嗎？")) {
-      setItems(items.filter((t) => t.id !== id));
+      setTasks(tasks.filter((t) => t.id !== id));
     }
   };
 
@@ -41,10 +41,8 @@ const ItemListTab = ({ tripId }) => {
 
   const handleSave = (updatedTask) => {
     if (editingItem) {
-      // 編輯模式
       setTasks(tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t)));
     } else {
-      // 新增模式
       setTasks([...tasks, { ...updatedTask, id: Date.now() }]);
     }
     closeModal();
@@ -106,7 +104,7 @@ const ItemListTab = ({ tripId }) => {
           return (
             <div key={cat} className="category-group">
               <div className="category-header">
-                <div className="cat-title-wrap">
+                <div>
                   <span className="cat-title">{cat}</span>
                   <span className="cat-badge">{catTasks.length}</span>
                 </div>
@@ -119,7 +117,7 @@ const ItemListTab = ({ tripId }) => {
                 </button>
               </div>
 
-              <div className="task-list">
+              <div>
                 {catTasks.map((task) => (
                   <ItemCard
                     key={task.id}

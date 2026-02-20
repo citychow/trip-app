@@ -31,13 +31,11 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
   };
 
   return (
-    <div className="full-page">
+    <div>
       <div className="container" style={{ paddingBottom: "50px" }}>
         {" "}
         {/* 預留位畀底部的 NavBar */}
-        <h2 style={{ marginTop: "20px" }}>
-          {initialData ? "✍️ 修改行程資料" : "✍️ 規劃新旅程"}
-        </h2>
+        <h2>{initialData ? "✍️ 修改行程資料" : "✍️ 規劃新旅程"}</h2>
         <div className="info-card">
           {/* 旅程名稱 */}
           <div className="input-group">
@@ -114,18 +112,10 @@ const CreateTrip = ({ onSave, onCancel, initialData }) => {
           className="button-group"
           style={{ display: "flex", gap: "12px", marginTop: "20px" }}
         >
-          <button
-            className="add-main-btn"
-        
-            onClick={handleSave}
-          >
+          <button className="add-main-btn" onClick={handleSave}>
             {initialData ? "儲存修改" : "開始規劃"}
           </button>
-          <button
-            className="cancel-main-btn"
-            
-            onClick={onCancel}
-          >
+          <button className="cancel-main-btn" onClick={onCancel}>
             取消
           </button>
         </div>

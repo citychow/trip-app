@@ -78,6 +78,11 @@ body {
   max-width: 500px;
   margin: 0 auto;
 }
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 10px;
+}
 
 .edit-btn {
   background: none;
@@ -99,11 +104,7 @@ body {
   padding: 5px;
   cursor: pointer;
 }
-.item-actions {
-  display: flex;
-  gap: 10px;
-  margin-left: 10px;
-}
+
 .placeholder {
   display: flex;
   justify-content: center;
@@ -295,6 +296,25 @@ body {
 .menu-item.cancel {
   color: #888;
   border-bottom: none;
+}
+
+/* Create Trip */
+
+.days-badge {
+  display: inline-block;
+  margin-top: 10px;
+  background: #34c759;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
 }
 
 /* Trip Details */
@@ -638,18 +658,6 @@ body {
   cursor: pointer;
 }
 
-.category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  padding: 0 5px;
-}
-.cat-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #7a6f5d;
-}
 .count-badge {
   background: #ffebeb;
   color: #ff8a8a;
@@ -704,7 +712,6 @@ body {
   color: #ffb5b5;
 }
 
-/* 地點列樣式 */
 .card-sub-header {
   display: flex;
   align-items: center;
@@ -718,7 +725,6 @@ body {
   font-size: 12px;
 }
 
-/* 數據內容網格 - 參考草圖的兩側對齊 */
 .card-content-grid {
   padding-top: 5px;
 }
@@ -793,7 +799,6 @@ body {
   border: 1px solid #eee;
 }
 
-/* 讓 Details 掣更有草圖感 */
 .details-btn {
   background: white;
   border: 1.5px solid #5d5447;
@@ -890,6 +895,41 @@ body {
   .date-row {
     flex-direction: column;
   }
+}
+/* seletive color for booking cards */
+/* 酒店 - 粉紅系 */
+.booking-card.type-酒店 {
+  border-left-color: #ffb5b5;
+}
+
+/* 機票 - 橙黃系 */
+.booking-card.type-機票 {
+  border-left-color: #ffd2a0;
+}
+.flight-box {
+  background: #fffbf5;
+}
+.flight-box strong {
+  color: #e67e22;
+}
+
+/* 餐廳 - 綠系 */
+.booking-card.type-餐廳 {
+  border-left-color: #a2e4b8;
+}
+.restaurant-box {
+  background: #f6fff9;
+}
+
+/* 交通 / 門票 - 藍/紫系 */
+.booking-card.type-交通 {
+  border-left-color: #a0c4ff;
+}
+.booking-card.type-門票 {
+  border-left-color: #ddbdf1;
+}
+.common-box {
+  background: #f8f9ff;
 }
 
 /* Billing Tab */
@@ -1438,7 +1478,7 @@ body {
   color: #b39f85;
 }
 .bg-重要 {
-  background: #ffebeb;
+  background: #fffdeb;
   color: #ff8a8a;
 }
 .bg-必買 {
@@ -1459,66 +1499,8 @@ body {
   opacity: 0.8;
 }
 
-/* UNKNOWN USE BELOW */
+/* Shopping Tab - New Form */
 
-.item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #f2f2f7;
-}
-
-.item span {
-  font-weight: 500;
-  color: #3a3a3c;
-}
-
-.map-link {
-  color: #007aff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  background: #f0f7ff;
-  padding: 4px 10px;
-  border-radius: 6px;
-}
-
-/* Modal 簡易樣式 */
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e5ea;
-  box-sizing: border-box;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-bottom: 100px; /* 預留空間俾底部的 Add 掣 */
-}
-
-/* ...保留之前嘅 style, 加埋下面呢啲... */
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-bottom: 100px; /* 預留空間俾底部的 Add 掣 */
-}
-
-/* 讓 Modal 浮現喺中間 */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1531,331 +1513,6 @@ body {
   justify-content: center;
   z-index: 2000; /* 確保高於 Navbar (Navbar 通常係 1000) */
   backdrop-filter: blur(2px); /* 增加背景模糊，更高級 */
-}
-
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 24px;
-  width: 85%;
-  max-width: 400px;
-}
-
-.modal-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-  padding-bottom: 20px; /* 額外間距 */
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* --- Create Trip Page 樣式 --- */
-
-.days-badge {
-  display: inline-block;
-  margin-top: 10px;
-  background: #34c759;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.button-group {
-  display: flex;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-/* --- Card Detail Button --- */
-.card-footer {
-  display: flex;
-  justify-content: flex-end; /* 靠右對齊 */
-  margin-top: 15px;
-}
-
-.detail-btn {
-  position: absolute; /* 絕對定位 */
-  top: 20px; /* 距離頂部 20px */
-  right: 20px; /* 距離右邊 20px */
-
-  background: #f2f2f7;
-  color: #007aff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.detail-btn:hover {
-  background: #007aff;
-  color: white;
-}
-
-/* --- 天氣與行程卡片 --- */
-
-.time-label {
-  color: #ff8a8a;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-/* BELOW ARE CSS FOR BOOKING TAB */
-
-.type-badge {
-  font-size: 10px;
-  background: #f0f0f0;
-  padding: 2px 8px;
-  border-radius: 10px;
-  color: #666;
-}
-
-.card-title {
-  margin: 10px 0;
-  font-size: 18px;
-  color: #333;
-}
-
-.card-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  font-size: 13px;
-  color: #666;
-}
-
-.map-link {
-  color: #4a90e2;
-  text-decoration: none;
-  font-weight: 600;
-  grid-column: span 2;
-  margin-top: 5px;
-}
-
-.card-remarks {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px dashed #eee;
-  font-size: 12px;
-  color: #888;
-  font-style: italic;
-}
-
-.card-attachment {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #4a90e2;
-  cursor: pointer;
-}
-
-.more-btn {
-  background: none;
-  border: none;
-  color: #ccc;
-  font-size: 22px;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.booking-card {
-  position: relative; /* 必要：讓子元素可以 absolute 定位 */
-  background: white;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-/* 數量標籤樣式 */
-
-/* 卡片與選單定位 */
-.booking-card {
-  position: relative;
-  background: white;
-  margin: 12px 16px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  border-left: 6px solid #eee; /* 預設邊框 */
-}
-
-.card-top-action {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  z-index: 100;
-}
-
-.more-options-btn {
-  background: none;
-  border: none;
-  color: #ddd;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.dropdown-menu {
-  position: absolute;
-  right: 0;
-  top: 35px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  width: 110px;
-  border: 1px solid #f0f0f0;
-  overflow: hidden;
-  animation: fadeIn 0.2s ease;
-}
-
-.menu-item {
-  padding: 12px;
-  font-size: 14px;
-  color: #555;
-  border-bottom: 1px solid #fafafa;
-}
-
-.menu-item.delete {
-  color: #ff7676;
-}
-
-/* 酒店時間顯示 (復刻截圖) */
-.hotel-time-display {
-  display: flex;
-  justify-content: space-between;
-  background: #fff9f9;
-  border-radius: 15px;
-  padding: 12px 18px;
-  margin-top: 10px;
-}
-
-.time-block label {
-  display: block;
-  font-size: 11px;
-  color: #ffb5b5;
-  margin-bottom: 2px;
-}
-
-.time-val {
-  font-size: 13px;
-  color: #666;
-  font-weight: 500;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* seletive color for booking cards */
-/* 酒店 - 粉紅系 */
-.booking-card.type-酒店 {
-  border-left-color: #ffb5b5;
-}
-
-/* 機票 - 橙黃系 */
-.booking-card.type-機票 {
-  border-left-color: #ffd2a0;
-}
-.flight-box {
-  background: #fffbf5;
-}
-.flight-box strong {
-  color: #e67e22;
-}
-
-/* 餐廳 - 綠系 */
-.booking-card.type-餐廳 {
-  border-left-color: #a2e4b8;
-}
-.restaurant-box {
-  background: #f6fff9;
-}
-
-/* 交通 / 門票 - 藍/紫系 */
-.booking-card.type-交通 {
-  border-left-color: #a0c4ff;
-}
-.booking-card.type-門票 {
-  border-left-color: #ddbdf1;
-}
-.common-box {
-  background: #f8f9ff;
-}
-
-/* --- 通用詳細框樣式 --- */
-
-.time-block label {
-  display: block;
-  font-size: 11px;
-  margin-bottom: 2px;
-}
-
-.time-val {
-  color: #666;
-  font-weight: 500;
-}
-
-/* 預算卡片樣式 */
-.budget-card {
-  background: white;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 24px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.spending-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background: white;
-  margin: 8px 15px;
-  border-radius: 16px;
-  border-left: 5px solid #ffb5b5; /* 配合你喜歡的粉紅色 */
-}
-
-.amount-text {
-  font-weight: bold;
-  color: #555;
-}
-
-/* Shopping Tab CSS */
-
-/* --- 頂部統計卡片 (復刻 image_6e099f.png) --- */
-
-/* --- 新增表單 Modal (AddItemForm) --- */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: flex-end; /* 手機端通常從底部彈出 */
-  justify-content: center;
-  z-index: 1000;
 }
 
 .add-modal {
@@ -1871,15 +1528,6 @@ body {
   overflow-y: auto; /* 內容過長時可以捲動 */
   animation: slideUp 0.3s ease-out;
   box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
 }
 
 .upload-area {
@@ -1922,41 +1570,29 @@ body {
   border-color: #ffb5b5;
 }
 
-/* 加返一個細細嘅向下箭頭 */
-.category-dropdown-wrapper::after {
-  content: "▼";
-  font-size: 8px;
-  color: #7a6f5d;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.category-select:focus {
-  border-color: #ffb5b5;
-}
-
-.filter-pill {
+.modal-actions {
   display: flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  /* ... 其他原有樣式 ... */
+  gap: 12px;
+  margin-top: 20px;
+  padding-bottom: 20px; /* 額外間距 */
 }
 
-/* ItemList CSS */
-.item-list-page {
-  padding: 15px;
-  background: #faf6f1;
-}
-
+/* Item Tab */
 .category-group {
   margin-bottom: 25px;
 }
-
-/* 復刻截圖中嘅小圓圈數字 */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 0 5px;
+}
+.cat-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #7a6f5d;
+}
 .cat-badge {
   background: #fcebd7;
   color: #d4a373;
@@ -1968,7 +1604,6 @@ body {
   justify-content: center;
   border-radius: 50%;
 }
-
 .add-inline-btn {
   background: #fff;
   border: 1px solid #eae2d7;
@@ -1983,111 +1618,7 @@ body {
   font-weight: bold;
 }
 
-/* 任務卡片樣式 */
-.item-card {
-  background: white;
-  border-radius: 18px;
-  padding: 15px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  border: 1px solid #f0ebe3;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-}
-
-/* ItemCard 特有樣式 */
-.item-content {
-  flex: 1;
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.item-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: #5d5447;
-}
-
-.item-date {
-  font-size: 11px;
-  color: #d4a373;
-  background: #fff9f2;
-  padding: 2px 8px;
-  border-radius: 10px;
-}
-
-/* Modal 內的 Textarea */
-.add-modal textarea {
-  width: 100%;
-  height: 80px;
-  padding: 12px;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  resize: none;
-  font-size: 14px;
-}
-
-.input-label {
-  font-size: 12px;
-  color: #9b9284;
-  margin-bottom: 5px;
-  display: block;
-}
-
-/* AddItemModal.css */
-
-.modal-fixed-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* 關鍵修正：將整個 Overlay 的底部縮短，避開 Navbar 高度 */
-  bottom: 80px;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* 保持 Flex-end 從底部彈出 */
-  backdrop-filter: blur(2px);
-}
-
-.modal-bottom-sheet {
-  background: white;
-  width: 100%;
-  border-radius: 28px 28px 0 0; /* 保持頂部圓角 */
-  padding: 24px;
-  /* 既然 Overlay 已經避開了底部，這裡只需處理內部滾動 */
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
-
-  /* 動態效果：從 Overlay 底部滑入 */
-  animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* 為了讓背景遮罩看起來還是蓋住全身，我們加一個偽元素填補 Navbar 後方空間 */
-.modal-fixed-overlay::after {
-  content: "";
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80px; /* 同 Navbar 高度一樣 */
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
-}
-
-/* ItemList Card CSS */
-/* 統一卡片容器 */
+/* Item Tab - Item Card */
 .item-card-main {
   background: white;
   border-radius: 18px;
@@ -2100,71 +1631,7 @@ body {
   transition: all 0.2s ease;
 }
 
-/* 佈局分配 */
-.card-left {
-  flex-shrink: 0;
-}
-.card-center {
-  flex-grow: 1;
-  margin: 0 15px;
-  cursor: pointer;
-  overflow: hidden; /* 防止文字溢出 */
-}
-.card-right {
-  flex-shrink: 0;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
+/* Item Tab - Add Item Modal */
+/* duplicates */
 
-/* 文字排版 */
-.item-row-top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.item-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #5d5447;
-}
-
-.item-row-bottom {
-  display: flex;
-  flex-direction: column; /* 日期同備註分兩行，更清晰 */
-  gap: 2px;
-}
-
-.item-date {
-  font-size: 11px;
-  color: #d4a373;
-  background: #fff9f2;
-  padding: 2px 8px;
-  border-radius: 10px;
-  width: fit-content;
-}
-
-.item-note-preview {
-  font-size: 12px;
-  color: #9b9284;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 按鈕樣式 */
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 14px;
-  color: #cdc7bd;
-  cursor: pointer;
-  padding: 5px;
-  transition: color 0.2s;
-}
-
-.icon-btn:hover {
-  color: #ffb5b5;
-}
+/* UNKNOWN USE BELOW */

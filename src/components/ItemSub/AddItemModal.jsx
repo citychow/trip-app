@@ -18,7 +18,7 @@ const AddItemModal = ({ onSave, onCancel, fixedCategory, initialData }) => {
   }, [initialData]);
 
   return (
-    <div className="modal-fixed-overlay">
+    <div className="modal-overlay">
       <div className="add-modal">
         <div>
           <h3>
@@ -39,7 +39,6 @@ const AddItemModal = ({ onSave, onCancel, fixedCategory, initialData }) => {
           </div>
 
           <div>
-            <label>重要程度</label>
             <div className="bubble-group">
               {["一般", "重要"].map((lvl) => (
                 <button
@@ -56,7 +55,7 @@ const AddItemModal = ({ onSave, onCancel, fixedCategory, initialData }) => {
             </div>
           </div>
 
-          <div className="date-group">
+          <div className="input-group date-group">
             <label>日期</label>
             <input
               type="date"
@@ -68,7 +67,8 @@ const AddItemModal = ({ onSave, onCancel, fixedCategory, initialData }) => {
           </div>
 
           <div className="input-group">
-            <textarea
+            <input
+              type="text"
               placeholder="備註..."
               value={formData.note}
               onChange={(e) =>
@@ -78,10 +78,10 @@ const AddItemModal = ({ onSave, onCancel, fixedCategory, initialData }) => {
           </div>
 
           <div className="modal-actions">
-            <button className="confirm-btn" onClick={() => onSave(formData)}>
+            <button className="btn-confirm-sm" onClick={() => onSave(formData)}>
               {initialData ? "儲存修改" : "加入清單"}
             </button>
-            <button className="cancel-btn" onClick={onCancel}>
+            <button className="btn-cancel-sm" onClick={onCancel}>
               取消
             </button>
           </div>

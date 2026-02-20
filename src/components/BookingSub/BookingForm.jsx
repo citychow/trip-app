@@ -6,14 +6,16 @@ import TransportForm from "./TransportForm";
 import EventForm from "./EventForm";
 
 const BookingForm = ({ onSave, onCancel, initialData, readOnly }) => {
-  const [formData, setFormData] = useState(initialData ||{
-    type: "酒店",
-    name: "",
-    checkInTime: "15:00",
-    checkOutTime: "11:00",
-    remarks: "",
-    filePreview: null,
-  });
+  const [formData, setFormData] = useState(
+    initialData || {
+      type: "酒店",
+      name: "",
+      checkInTime: "15:00",
+      checkOutTime: "11:00",
+      remarks: "",
+      filePreview: null,
+    }
+  );
 
   const updateData = (newData) => {
     setFormData((prev) => ({ ...prev, ...newData }));
@@ -23,12 +25,18 @@ const BookingForm = ({ onSave, onCancel, initialData, readOnly }) => {
     const subProps = { data: formData, updateData, readOnly };
 
     switch (formData.type) {
-      case "酒店": return <HotelForm {...subProps} />;
-      case "機票": return <FlightForm {...subProps} />;
-      case "餐廳": return <RestaurantForm {...subProps} />;
-      case "交通": return <TransportForm {...subProps} />;
-      case "門票": return <EventForm {...subProps} />;
-      default: return null;
+      case "酒店":
+        return <HotelForm {...subProps} />;
+      case "機票":
+        return <FlightForm {...subProps} />;
+      case "餐廳":
+        return <RestaurantForm {...subProps} />;
+      case "交通":
+        return <TransportForm {...subProps} />;
+      case "門票":
+        return <EventForm {...subProps} />;
+      default:
+        return null;
     }
   };
 
@@ -62,15 +70,25 @@ const BookingForm = ({ onSave, onCancel, initialData, readOnly }) => {
             {!readOnly && (
               <input
                 type="file"
-                onChange={(e) => updateData({ filePreview: URL.createObjectURL(e.target.files[0]) })}
+                onChange={(e) =>
+                  updateData({
+                    filePreview: URL.createObjectURL(e.target.files[0]),
+                  })
+                }
               />
             )}
-            
+
             {/* 這裡讓文件在唯讀模式下也可以看 */}
             {formData.filePreview && (
               <div className="file-display" style={{ marginTop: "10px" }}>
-                <img src={formData.filePreview} alt="Preview" style={{ width: "100%", borderRadius: "8px" }} />
-                {readOnly && <p style={{ fontSize: "12px", color: "#9B9284" }}>附件預覽</p>}
+                <img
+                  src={formData.filePreview}
+                  alt="Preview"
+                  style={{ width: "100%", borderRadius: "8px" }}
+                />
+                {readOnly && (
+                  <p style={{ fontSize: "12px", color: "#9B9284" }}>附件預覽</p>
+                )}
               </div>
             )}
           </div>
@@ -88,13 +106,24 @@ const BookingForm = ({ onSave, onCancel, initialData, readOnly }) => {
           </div>
         </div>
 
-        <div className="form-actions" style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+        <div
+          className="form-actions"
+          style={{ display: "flex", gap: "10px", marginTop: "20px" }}
+        >
           {!readOnly && (
-            <button className="add-main-btn" style={{ flex: 2 }} onClick={() => onSave(formData)}>
+            <button
+              className="add-main-btn"
+              style={{ flex: 2 }}
+              onClick={() => onSave(formData)}
+            >
               儲存變更
             </button>
           )}
-          <button className="add-item-btn" style={{ flex: 1 }} onClick={onCancel}>
+          <button
+            className="cancel-main-btn"
+            style={{ flex: 1 }}
+            onClick={onCancel}
+          >
             {readOnly ? "關閉" : "取消"}
           </button>
         </div>

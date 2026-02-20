@@ -26,7 +26,7 @@ const AddItemForm = ({ onSave, onCancel, initialData, isEdit }) => {
       <div className="add-modal">
         <h3>{isEdit ? "✏️ 編輯項目" : "🛍️ 新增物品"}</h3>
         <div className="upload-area">
-          <label className="upload-label">
+          <label>
             {item.image ? (
               <img src={item.image} alt="preview" />
             ) : (
@@ -51,7 +51,6 @@ const AddItemForm = ({ onSave, onCancel, initialData, isEdit }) => {
         </div>
 
         <div>
-          <span>重要程度</span>
           <div className="bubble-group">
             {["一般", "重要", "必買"].map((lvl) => (
               <button
@@ -86,10 +85,10 @@ const AddItemForm = ({ onSave, onCancel, initialData, isEdit }) => {
         </div>
 
         <div className="modal-actions">
-          <button className="confirm-btn" onClick={() => onSave(item)}>
+          <button className="btn-confirm-sm" onClick={() => onSave(item)}>
             {isEdit ? "儲存修改" : "加入清單"}
           </button>
-          <button className="cancel-btn" onClick={onCancel}>
+          <button className="btn-cancel-sm" onClick={onCancel}>
             取消
           </button>
         </div>
