@@ -153,6 +153,12 @@ body {
   text-decoration: underline;
 }
 
+.empty-text {
+  text-align: center;
+  color: #ccc;
+  padding: 20px;
+}
+
 /* Landing Page 容器 */
 .trip-card {
   position: relative;

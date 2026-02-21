@@ -29,6 +29,18 @@ const App = () => {
     setSelectedTrip(updatedTrip);
   };
 
+  const handleDeleteTrip = (id) => {
+    const confirmed = window.confirm(
+      "⚠️ 確定要刪除整個行程嗎？所有相關紀錄亦會被刪除。"
+    );
+    if (confirmed) {
+      setTrips(trips.filter((t) => t.id !== id));
+      // // Optional: Clean up localStorage for this specific trip
+      // localStorage.removeItem(`billing_${id}`);
+      // localStorage.removeItem(`itinerary_${id}`);
+    }
+  };
+
   const saveNewTrip = (newTripData) => {
     if (screen === "edit") {
       setTrips(
@@ -54,7 +66,7 @@ const App = () => {
               trips={trips}
               setScreen={setScreen}
               setSelectedTrip={setSelectedTrip}
-              deleteTrip={(id) => setTrips(trips.filter((t) => t.id !== id))}
+              deleteTrip={handleDeleteTrip}
             />
           );
         }

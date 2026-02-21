@@ -88,166 +88,176 @@ const BookingTab = ({ tripId }) => {
             ➕
           </button>
         </header>
-        <div className="container">
-          <div>
-            {categories.map((cat) => {
-              const catItems = bookings.filter((b) => b.type === cat);
-              if (catItems.length === 0) return null;
+        {bookings.length === 0 ? (
+          /* 1. 當無資料時顯示嘅 Statement */
+          <div className="budget-card empty-state">
+            <div className="budget-icon">📭</div>
+            <p className="empty-text">
+              呢度暫時仲係空嘅，快啲加入你第一個預約啦！
+            </p>
+          </div>
+        ) : (
+          <div className="container">
+            <div>
+              {categories.map((cat) => {
+                const catItems = bookings.filter((b) => b.type === cat);
+                if (catItems.length === 0) return null;
 
-              return (
-                <div key={cat}>
-                  <div className="category-header">
-                    <span className="cat-title">{cat}</span>
-                    <span className="count-badge">{catItems.length}</span>
-                  </div>
-                  {catItems.map((item) => (
-                    <div
-                      key={item.id}
-                      className={`booking-card type-${item.type}`}
-                    >
-                      {/* 1. Header: 名稱與動作 (跟足草圖) */}
-                      <div className="card-header">
-                        <div className="card-title-group">
-                          <h3 className="card-name">{item.name}</h3>
-                          {item.bookingRef && (
-                            <span className="booking-ref">
-                              Ref: {item.bookingRef}
-                            </span>
-                          )}
-                        </div>
-                        <div className="card-top-action">
-                          <button
-                            className="details-btn"
-                            onClick={(e) => {
-                              handleShowDetails(item);
-                            }}
-                          >
-                            Details
-                          </button>
-                          <button
-                            className="edit-btn"
-                            onClick={() => handleEdit(item)}
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            className="del-btn"
-                            onClick={() => handleDelete(item.id)}
-                          >
-                            ×
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* 2. Sub-header: Location / Link (📍 圖示) */}
-                      {(item.location || item.link) && (
-                        <div className="card-sub-header">
-                          <span className="location-icon">📍</span>
-                          <span className="location-text">
-                            {item.location || "查看連結"}
-                          </span>
-                        </div>
-                      )}
-
-                      {/* 3. Main Data Content: 嚴格遵循草圖佈局 */}
-                      <div className="card-content-grid">
-                        {item.type === "機票" ? (
-                          <div className="grid-details flight-grid">
-                            <div className="data-row">
-                              <span className="airport">
-                                {item.depAirport}{" "}
-                                {item.depTerminal && `at ${item.depTerminal}`}
+                return (
+                  <div key={cat}>
+                    <div className="category-header">
+                      <span className="cat-title">{cat}</span>
+                      <span className="count-badge">{catItems.length}</span>
+                    </div>
+                    {catItems.map((item) => (
+                      <div
+                        key={item.id}
+                        className={`booking-card type-${item.type}`}
+                      >
+                        {/* 1. Header: 名稱與動作 (跟足草圖) */}
+                        <div className="card-header">
+                          <div className="card-title-group">
+                            <h3 className="card-name">{item.name}</h3>
+                            {item.bookingRef && (
+                              <span className="booking-ref">
+                                Ref: {item.bookingRef}
                               </span>
-                              <div className="val">
-                                {item.checkIn}{" "}
-                                <span className="small-time">
-                                  {item.checkInTime}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="data-row">
-                              <span className="airport">
-                                {item.arrAirport}{" "}
-                                {item.arrTerminal && `at ${item.arrTerminal}`}
-                              </span>
-                              <div className="val">
-                                {item.checkOut}{" "}
-                                <span className="small-time">
-                                  {item.checkOutTime}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ) : item.type === "酒店" ? (
-                          <div className="grid-details hotel-grid">
-                            <div className="data-col">
-                              <label>Check-in</label>
-                              <div className="val">
-                                {item.checkIn}{" "}
-                                <span className="small-time">
-                                  {item.checkInTime}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="data-col text-right">
-                              <label>Check-out</label>
-                              <div className="val">
-                                {item.checkOut}{" "}
-                                <span className="small-time">
-                                  {item.checkOutTime}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ) : item.type === "交通" ? (
-                          <div className="grid-details transport-grid">
-                            <div className="data-col">
-                              <label>Start</label>
-                              <div className="val">
-                                {item.checkIn}{" "}
-                                <span className="small-time">
-                                  {item.checkInTime}
-                                </span>
-                              </div>
-                            </div>
-                            <div className="data-col text-right">
-                              <label>End</label>
-                              <div className="val">
-                                {item.checkOut}{" "}
-                                <span className="small-time">
-                                  {item.checkOutTime}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          /* 餐廳、門票等通用格式 */
-                          <div className="grid-details simple-grid">
-                            <div className="data-col">
-                              <label>Date Time</label>
-                              <div className="val">
-                                {item.checkIn || item.date}{" "}
-                                <span className="small-time">
-                                  {item.checkInTime}
-                                </span>
-                              </div>
-                            </div>
-                            {item.category && (
-                              <div className="data-col text-right">
-                                <label>Category</label>
-                                <div className="val">{item.category}</div>
-                              </div>
                             )}
                           </div>
+                          <div className="card-top-action">
+                            <button
+                              className="details-btn"
+                              onClick={(e) => {
+                                handleShowDetails(item);
+                              }}
+                            >
+                              Details
+                            </button>
+                            <button
+                              className="edit-btn"
+                              onClick={() => handleEdit(item)}
+                            >
+                              ✏️
+                            </button>
+                            <button
+                              className="del-btn"
+                              onClick={() => handleDelete(item.id)}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* 2. Sub-header: Location / Link (📍 圖示) */}
+                        {(item.location || item.link) && (
+                          <div className="card-sub-header">
+                            <span className="location-icon">📍</span>
+                            <span className="location-text">
+                              {item.location || "查看連結"}
+                            </span>
+                          </div>
                         )}
+
+                        {/* 3. Main Data Content: 嚴格遵循草圖佈局 */}
+                        <div className="card-content-grid">
+                          {item.type === "機票" ? (
+                            <div className="grid-details flight-grid">
+                              <div className="data-row">
+                                <span className="airport">
+                                  {item.depAirport}{" "}
+                                  {item.depTerminal && `at ${item.depTerminal}`}
+                                </span>
+                                <div className="val">
+                                  {item.checkIn}{" "}
+                                  <span className="small-time">
+                                    {item.checkInTime}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="data-row">
+                                <span className="airport">
+                                  {item.arrAirport}{" "}
+                                  {item.arrTerminal && `at ${item.arrTerminal}`}
+                                </span>
+                                <div className="val">
+                                  {item.checkOut}{" "}
+                                  <span className="small-time">
+                                    {item.checkOutTime}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ) : item.type === "酒店" ? (
+                            <div className="grid-details hotel-grid">
+                              <div className="data-col">
+                                <label>Check-in</label>
+                                <div className="val">
+                                  {item.checkIn}{" "}
+                                  <span className="small-time">
+                                    {item.checkInTime}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="data-col text-right">
+                                <label>Check-out</label>
+                                <div className="val">
+                                  {item.checkOut}{" "}
+                                  <span className="small-time">
+                                    {item.checkOutTime}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ) : item.type === "交通" ? (
+                            <div className="grid-details transport-grid">
+                              <div className="data-col">
+                                <label>Start</label>
+                                <div className="val">
+                                  {item.checkIn}{" "}
+                                  <span className="small-time">
+                                    {item.checkInTime}
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="data-col text-right">
+                                <label>End</label>
+                                <div className="val">
+                                  {item.checkOut}{" "}
+                                  <span className="small-time">
+                                    {item.checkOutTime}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            /* 餐廳、門票等通用格式 */
+                            <div className="grid-details simple-grid">
+                              <div className="data-col">
+                                <label>Date Time</label>
+                                <div className="val">
+                                  {item.checkIn || item.date}{" "}
+                                  <span className="small-time">
+                                    {item.checkInTime}
+                                  </span>
+                                </div>
+                              </div>
+                              {item.category && (
+                                <div className="data-col text-right">
+                                  <label>Category</label>
+                                  <div className="val">{item.category}</div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              );
-            })}
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

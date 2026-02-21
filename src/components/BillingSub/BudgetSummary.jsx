@@ -33,7 +33,7 @@ const BudgetSummary = ({
     return (
       <div className="budget-card empty-state">
         <div className="budget-icon">💰</div>
-        <p>仲未設定預算喎！</p>
+        <p className="empty-text">仲未設定預算喎！</p>
         <button className="add-budget-btn" onClick={() => setIsEditing(true)}>
           + 加入行程預算
         </button>
